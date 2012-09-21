@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Moving cloud</title>
+</head>
+<body>
+<div id="clouds">
+  <div class="cloud x1"></div>
+  <div class="cloud x2"></div>
+  <div class="cloud x3"></div>
+  <div class="cloud x4"></div>
+  <div class="cloud x5"></div>
+</div>
+<div id="wrapper">
+  <div class="content">
+    <h1>基本原理</h1>
+    <article>
+      <li>CSS3画云
+        <pre class="brush: css;">
+    .cloud
+	{
+		width:200px;
+		height:60px;
+		background:#fff;
+		border-radius:200px;
+		position:relative;
+	}
+	.cloud:before,.cloud:after
+	{
+		position:absolute;
+		content:'';
+		background:#fff;
+		width:100px;height:80px;
+		border-radius:100px;
+		left:10px;
+		top:-20px;
+		-webkit-transform:rotate(30deg);
+	}
+	
+	.cloud:after
+	{
+		width:120px;height:120px;
+		border-radius:120px;
+		left:70px;
+		top:-55px;
+	}
+       
+       </pre>
+      </li>
+      <li>让云移动
+        <article>
+          <p>利用animation与margin属性，让云transform移动</p>
+          <pre class="brush: css;">
+        @-webkit-keyframes moveCloud
+		{
+			0%{margin-left:1000px;}
+			100%{margin-left:-1000px;}
+		}
+      </pre>
+          <p>再为每朵去设置恰当位置与透明度即可</p>
+          <pre class="brush: css ;">
+    .x1
+	{
+		-webkit-animation:moveCloud 15s linear infinite;
+		-moz-animation:moveCloud 15s linear infinite;
+	}
+      
+      </pre>
+        </article>
+      </li>
+    </article>
+    <footer>By ifeixiang 没有版权，共同学习</footer>
+  </div>
+</div>
+<script type="text/javascript" src="scripts/shCore.js"></script> 
+<script type="text/javascript" src="scripts/shBrushCss.js"></script> 
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+<style type="text/css">
+*{margin:0;padding:0;}
+body{
+	font-family:"Microsoft Yahei";
+	background: #c9dbe9;
+    background: -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%) no-repeat;
+	background: -linear-gradient(top, #c9dbe9 0%, #fff 100%) no-repeat;
+	background: -moz-linear-gradient(top, #c9dbe9 0%, #fff 100%) no-repeat;	
+}
+footer
+{
+	text-align:center;
+}
+#wrapper
+	{
+		width:100%;
+		position:absolute;
+		top:50px;
+		margin:20px 0;
+	}
+	.content
+	{
+		width:80%;
+		margin:0 auto;
+		background:rgba(255,255,255,.5);
+		padding:20px;
+		-webkit-border-radius:20px;
+		-moz-border-radius:20px;
+		-webkit-box-shadow:5px 5px 20px 1px rgba(0,0,0,.2);
+		-moz-box-shadow:5px 5px 20px 1px rgba(0,0,0,.2);
+	}
+	.content p{text-indent:2em;}
+
+    #clouds
+	{
+		overflow:hidden;
+		padding:100px 0;
+	}
+	.cloud
+	{
+		width:200px;
+		height:60px;
+		background:#fff;
+		border-radius:200px;
+		position:relative;
+	}
+	.cloud:before,.cloud:after
+	{
+		position:absolute;
+		content:'';
+		background:#fff;
+		width:100px;height:80px;
+		border-radius:100px;
+		left:10px;
+		top:-20px;
+		-webkit-transform:rotate(30deg);
+		-moz-transform:rotate(30deg);
+	}
+	
+	.cloud:after
+	{
+		width:120px;height:120px;
+		border-radius:120px;
+		left:70px;
+		top:-55px;
+	}
+	/*
+	* 1 , first , move them out of the screen
+	*/
+	.x1
+	{
+		-webkit-animation:moveCloud 15s linear infinite;
+		-moz-animation:moveCloud 15s linear infinite;
+	}
+	.x2
+	{
+		top:-120px;
+		left:200px;
+		-webkit-animation:moveCloud 12s linear infinite;
+		-moz-animation:moveCloud 12s linear infinite;
+		-webkit-transform:scale(.6);
+		-moz-transform:scale(.6);
+		opacity:.8;
+	}
+	.x3
+	{
+		top:-80px;
+		left:-200px;
+		-webkit-animation:moveCloud 17s linear infinite;
+		-moz-animation:moveCloud 17s linear infinite;
+		-webkit-transform:scale(.8);
+		-moz-transform:scale(.8);
+		opacity:.9;
+	}
+	.x4
+	{
+		top:-200px;
+		left:200px;
+		-webkit-animation:moveCloud 18s linear infinite;
+		-moz-animation:moveCloud 18s linear infinite;
+		-webkit-transform:scale(.7);
+		-moz-transform:scale(.7);
+	}
+	.x5
+	{
+		-webkit-animation:moveCloud 9s linear infinite;
+		-moz-animation:moveCloud 9s linear infinite;
+		opacity:.5;
+		top:-120px;
+		-webkit-transform:scale(.8);
+		-moz-transform:scale(.8);
+	}
+	@-webkit-keyframes moveCloud
+	{
+		0%{margin-left:1024px;}
+		100%{margin-left:-1024px;}
+	}
+	@-moz-keyframes moveCloud
+	{
+		0%{margin-left:1000px;}
+		100%{margin-left:-1000px;}
+	}
+	
+</style>
+</body>
+</html>
