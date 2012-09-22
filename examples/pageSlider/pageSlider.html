@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PageSlider</title>
+</head>
+<body>
+<div id="wrapper">
+  <header class="menu">
+    <ul>
+      <li>Page1</li>
+      <li>Page2</li>
+      <li>Page3</li>
+      <li>Page4</li>
+      <li>基本原理</li>
+    </ul>
+  </header>
+  <div class="pages">
+    <div class="page x1"><img src="images/2.jpg" /></div>
+    <div class="page x2"><img src="images/2.jpg" /></div>
+    <div class="page x3"><img src="images/3.jpg" /></div>
+    <div class="page x4"><img src="images/4.jpg" /></div>
+    <div class="page x5"><img src="images/5.jpg" /></div>
+  </div>
+</div>
+
+<!--<div id="wrapper">
+  <div class="content">
+    <h1>基本原理</h1>
+    <footer>By ifeixiang 没有版权，共同学习</footer>
+  </div>
+</div>-->
+<!--代码高亮工具--> 
+<script type="text/javascript" src="../sh_scripts/shCore.js"></script> 
+<script type="text/javascript" src="../sh_scripts/shBrushCss.js"></script> 
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<link type="text/css" rel="stylesheet" href="../sh_styles/shCoreDefault.css"/>
+
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/tabMenu.js"></script>
+<script type="text/javascript">
+	
+
+</script>
+<style type="text/css">
+*{margin:0;padding:0;}
+ul,li{list-style:none;}
+body{
+	font-family:"Microsoft Yahei";
+	overflow: hidden;
+	background: #c9dbe9;
+    background: -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%) no-repeat;
+	background: -linear-gradient(top, #c9dbe9 0%, #fff 100%) no-repeat;
+	background: -moz-linear-gradient(top, #c9dbe9 0%, #fff 100%) no-repeat;	
+}
+footer
+{
+	text-align:center;
+}
+#wrapper
+	{
+		/*position: absolute;
+    	width: 500%;
+   		height: 100%;*/
+    	
+	}
+	.content
+	{
+		width:80%;
+		margin:0 auto;
+		background:rgba(255,255,255,.5);
+		padding:20px;
+		-webkit-border-radius:20px;
+		-moz-border-radius:20px;
+		-webkit-box-shadow:5px 5px 20px 1px rgba(0,0,0,.2);
+		-moz-box-shadow:5px 5px 20px 1px rgba(0,0,0,.2);
+	}
+	.content p{text-indent:2em;}
+
+    
+	/*
+	* first , we set a page cover the full screen
+	* we get 5 test pages , so , the sum width is 5*100% ; 
+	*/
+	.pages
+	{
+		width:500%;
+		position:absolute;
+		left:0;
+		top:0;
+		z-index: 0;
+	}
+	.page
+	{
+		position: relative;
+    	height: 100%;
+    	width: 20%; /*  NOTE: numVideos/100%  */;
+    	float: left;
+    	overflow: hidden;
+		background:#fff;  
+	}
+	.page img
+	{
+		min-width:100%;
+		min-height:100%;
+		height: auto;
+        width: auto;
+	}
+	.x1{background:#eee;}
+	.x2{background:#ddd;}
+	.x3{background:#ccc;}
+	.x4{background:#bbb;}
+	.x5{background:#aaa;}
+	/*
+	 * 2. let's style the header navigation 
+	*/
+	header
+	{
+		position:absolute;
+		width:100%;
+		top:0 ;
+		left:25%; 
+		margin-left:%;
+		z-index:2;
+	}
+	header li
+	{
+		float:left;
+		padding:10px 20px;
+		margin:0 10px;
+		cursor:pointer;
+		background:rgba(255,255,255,.4);
+		border:1px solid #dee;
+		-webkit-box-shadow:1px 1px 5px 1px rgba(255,255,255,.5);
+	}
+	header li:hover
+	{
+		-webkit-transition:all .5s ease-in-out;
+		-webkit-box-shadow:1px 1px 100px 1px rgba(255,255,255,.5);
+	}
+	
+	
+	
+	@-webkit-keyframes moveCloud
+	{
+		0%{margin-left:1024px;}
+		100%{margin-left:-1024px;}
+	}
+	@-moz-keyframes moveCloud
+	{
+		0%{margin-left:1000px;}
+		100%{margin-left:-1000px;}
+	}
+	
+</style>
+</body>
+</html>
