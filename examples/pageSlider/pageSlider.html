@@ -5,39 +5,97 @@
 <title>PageSlider</title>
 </head>
 <body>
-<div id="wrapper">
-  <header class="menu">
-    <ul>
-      <li>Page1</li>
-      <li>Page2</li>
-      <li>Page3</li>
-      <li>Page4</li>
-      <li>基本原理</li>
-    </ul>
-  </header>
-  <div class="pages">
-    <div class="page x1"><img src="images/2.jpg" /></div>
-    <div class="page x2"><img src="images/2.jpg" /></div>
-    <div class="page x3"><img src="images/3.jpg" /></div>
-    <div class="page x4"><img src="images/4.jpg" /></div>
-    <div class="page x5"><img src="images/5.jpg" /></div>
-  </div>
+<header class="menu">
+  <ul>
+    <li>Page1</li>
+    <li>Page2</li>
+    <li>Page3</li>
+    <li>Page4</li>
+    <li>基本原理</li>
+  </ul>
+</header>
+<div class="pages">
+  <div class="page x1"><img src="images/1.jpg" /></div>
+  <div class="page x2"><img src="images/2.jpg" /></div>
+  <div class="page x3"><img src="images/3.jpg" /></div>
+  <div class="page x4"><img src="images/4.jpg" /></div>
+  <div class="page x5"><img src="images/5.jpg" /></div>
 </div>
-
-<!--<div id="wrapper">
-  <div class="content">
-    <h1>基本原理</h1>
-    <footer>By ifeixiang 没有版权，共同学习</footer>
-  </div>
-</div>-->
+<div id="wrapper">
+<div class="content">
+  <h1>基本原理</h1>
+  <article>
+    <li>1:CSS将确定宽度，将其他页面先隐藏
+      <pre class="brush: css;">
+                    body{
+						font-family:"Microsoft Yahei",Arial, Helvetica, sans-serif;
+						overflow: hidden;/*这里内容过多会出现竖向滚动条，可用overflow-x:hidden*/
+					}
+                    
+                    .pages
+					{
+						width:500%;
+						position:absolute;
+						left:0;
+						top:0;
+						z-index: 0;
+					}
+                    .page
+                    {
+                        position: relative;
+                        height: 100%;
+                        width: 20%; /*  NOTE: numVideos/100%  */;
+                        float: left;
+                        overflow: hidden;
+                        background:#fff;  
+                    }
+                    .page img
+                    {
+                        min-width:100%;
+                        min-height:100%;
+                        height: auto;
+                        width: auto;
+                    }
+                    </pre>
+    </li>
+    <li>2:JS写滑动效果
+      <pre class="brush: js;">
+                        $(function(){
+                                tabInit('menu','pages');
+                                
+                        });
+                    
+                    //通用方法，传入菜单类名与tab内容类名即可
+                    function tabInit(menu , content)
+                    {
+                        var menuName = "."+menu ; 
+                        var contentName = "."+content ; 
+                        
+                        var w = $(window).width();
+                        var h = $(window).height();
+                        /*$(contentName).css("height",h);*/
+                                //注册li的点击事件
+                                $(menuName+" li").each(function(index){
+                                 $(this).click(
+                                      function(){
+                                          //先设置菜单current
+                                          $(contentName).animate({left:-index*w+"px"},1200);
+                                     });
+                                });
+                    }
+                    </pre>
+    </li>
+  </article>
+</div>
+<footer>By ifeixiang 没有版权，共同学习</footer> 
 <!--代码高亮工具--> 
 <script type="text/javascript" src="../sh_scripts/shCore.js"></script> 
 <script type="text/javascript" src="../sh_scripts/shBrushCss.js"></script> 
+<script type="text/javascript" src="../sh_scripts/shBrushJScript.js"></script> 
 <script type="text/javascript">SyntaxHighlighter.all();</script>
 <link type="text/css" rel="stylesheet" href="../sh_styles/shCoreDefault.css"/>
-
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/tabMenu.js"></script>	
+<script type="text/javascript" src="../js/jquery.js"></script> 
+<script type="text/javascript" src="../js/tabMenu.js"></script> 
 <script type="text/javascript">
 	
 
@@ -46,12 +104,8 @@
 *{margin:0;padding:0;}
 ul,li{list-style:none;}
 body{
-	font-family:"Microsoft Yahei";
-	overflow: hidden;
-	background: #c9dbe9;
-    background: -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%) no-repeat;
-	background: -linear-gradient(top, #c9dbe9 0%, #fff 100%) no-repeat;
-	background: -moz-linear-gradient(top, #c9dbe9 0%, #fff 100%) no-repeat;	
+	font-family:"Microsoft Yahei",Arial, Helvetica, sans-serif;
+	overflow: hidden;/*这里内容过多会出现竖向滚动条*/
 }
 footer
 {
@@ -59,13 +113,17 @@ footer
 }
 #wrapper
 	{
-		/*position: absolute;
-    	width: 500%;
-   		height: 100%;*/
-    	
+		position:fixed;
+		top:0;
+		left:0;
+		width:100%;
+		margin-top:20px;
+		height:95%;
+		overflow:auto;
 	}
 	.content
 	{
+		position:relative;
 		width:80%;
 		margin:0 auto;
 		background:rgba(255,255,255,.5);
@@ -75,6 +133,7 @@ footer
 		-webkit-box-shadow:5px 5px 20px 1px rgba(0,0,0,.2);
 		-moz-box-shadow:5px 5px 20px 1px rgba(0,0,0,.2);
 	}
+	.content h1{margin:4px;}
 	.content p{text-indent:2em;}
 
     
@@ -96,7 +155,6 @@ footer
     	height: 100%;
     	width: 20%; /*  NOTE: numVideos/100%  */;
     	float: left;
-    	overflow: hidden;
 		background:#fff;  
 	}
 	.page img
@@ -110,7 +168,7 @@ footer
 	.x2{background:#ddd;}
 	.x3{background:#ccc;}
 	.x4{background:#bbb;}
-	.x5{background:#aaa;}
+	.x5{/*background:url(images/5.jpg) center;*/}
 	/*
 	 * 2. let's style the header navigation 
 	*/
@@ -140,18 +198,13 @@ footer
 		-webkit-transform:scale(1.2);
 		-webkit-box-shadow:1px 1px 100px 1px rgba(255,255,255,.5);
 	}
-	
-	
-	
-	@-webkit-keyframes moveCloud
-	{
-		0%{margin-left:1024px;}
-		100%{margin-left:-1024px;}
-	}
-	@-moz-keyframes moveCloud
-	{
-		0%{margin-left:1000px;}
-		100%{margin-left:-1000px;}
+	footer{
+		width:100%;
+		position:fixed;
+		bottom:0;left:0;
+		background:rgba(0,0,0,.2);	
+		text-align:center;
+		padding:10px;
 	}
 	
 </style>

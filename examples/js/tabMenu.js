@@ -18,6 +18,7 @@ function tabInit(menu , content)
 	
 	var w = $(window).width();
 	var h = $(window).height();
+	/*$(contentName).css("height",h);*/
 			//注册li的点击事件
    			$(menuName+" li").each(function(index){
       		 $(this).click(
