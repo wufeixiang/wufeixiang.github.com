@@ -1,0 +1,14 @@
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
+
+a:hover,a:active,a:link{outline:0;text-decoration:none;}
+
+.bg-color-blue{background-color:#2d89f0 !important;}
+.bg-color-blueDark{background-color:#0064cd !important;}
+.bg-color-green{background-color:#01a31c !important;}
+.bg-color-greenDark{background-color:#005200 !important;}
+.bg-color-red{background-color:#bc1c48 !important;}
+.bg-color-yellow{background-color:#ffc40d !important;}
+.bg-color-orange{background-color:#d44a26 !important;}
+.bg-color-pink{background-color:#c3325f !important;}
+.bg-color-purple{background-color:#603cba !important;}
+.bg-color-darken{background-color:#1c1c1c !important;}
