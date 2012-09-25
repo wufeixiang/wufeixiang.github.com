@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PageSlider</title>
+</head>
+<body>
+<header class="menu">
+  <ul>
+    <li><a href="index.html">效果1</a></li>
+    <li><a href="index2.html">效果2</a></li>
+    <li><a href="index3.html">效果3</a></li>
+  </ul>
+</header>
+<div class="nav">
+  <ul>
+    <li id='a0' con_url='main.html'> </li>
+    <li id='a3' con_url='diy.html'> </li>
+    <li id='a1'con_url='product.html'> </li>
+    <li id='a2' con_url='360.html'> </li>
+    <li id='a4' con_url='video.html'> </li>
+  </ul>
+</div>
+</script>
+<style type="text/css">
+*{margin:0;padding:0;}
+ul,li{list-style:none;}
+body{
+	font-family:"Microsoft Yahei",Arial, Helvetica, sans-serif;
+	overflow: hidden;/*这里内容过多会出现竖向滚动条*/
+	background:url(images/index.bg.jpg) no-repeat;
+}
+footer
+{
+	text-align:center;
+}
+    #wrapper
+	{
+		position:fixed;
+		top:0;
+		left:0;
+		width:100%;
+		margin-top:20px;
+		height:95%;
+		overflow:auto;
+	}
+	.content
+	{
+		position:relative;
+		width:80%;
+		margin:0 auto;
+		background:rgba(255,255,255,.5);
+		padding:20px;
+		-webkit-border-radius:20px;
+		-moz-border-radius:20px;
+		-webkit-box-shadow:5px 5px 20px 1px rgba(0,0,0,.2);
+		-moz-box-shadow:5px 5px 20px 1px rgba(0,0,0,.2);
+	}
+	.content h1{margin:4px;}
+	.content p{text-indent:2em;}
+
+    
+	
+	#a0 {
+	left:190px;
+	top:160px;
+	background:url(images/index_home.png) no-repeat;
+}
+#a1 {
+	
+	left:470px;
+	top:345px;
+	background:url(images/index_product.png) no-repeat;
+}
+#a2 {
+	
+	left:630px;
+	top:305px;
+	background:url(images/index_360.png) no-repeat;
+}
+
+#a3 {
+	
+	left:302px;
+	top:294px;
+	background:url(images/index_diy.png) no-repeat;
+}
+
+
+#a4 {
+	left:740px;
+	top:170px;
+	background:url(images/index_service.png) no-repeat;
+}
+
+	header
+	{
+		position:absolute;
+		width:100%;
+		top:-1px ;
+		left:25%; 
+		margin-left:%;
+		z-index:2;
+	}
+	header li
+	{
+		float:left;
+		padding:10px 20px;
+		margin:0 10px;
+		cursor:pointer;
+		background:rgba(255,255,255,.4);
+		border:1px solid #dee;
+		-webkit-box-shadow:1px 1px 5px 1px rgba(255,255,255,.5);
+	}
+	header li:hover
+	{
+		-webkit-transition:all .5s ease-in-out;
+		background:rgba(255,255,255,.7);
+		-webkit-transform:scale(1.2);
+		-webkit-box-shadow:1px 1px 100px 1px rgba(255,255,255,.5);
+	}
+	footer{
+		width:100%;
+		position:fixed;
+		bottom:0;left:0;
+		background:rgba(0,0,0,.2);	
+		text-align:center;
+		padding:10px;
+	}
+	
+	.nav li {
+	display:block;
+	width:100px;
+	height:100px;
+	cursor:pointer;
+	position:absolute;
+	-webkit-animation:rotateEff2 2s ease-in infinite;
+}
+
+@-webkit-keyframes bubble
+{
+	0%{ -webkit-transform:scale(1);}
+	50%{-webkit-transform:scale(1.5);}
+	100%{ -webkit-transform:scale(1);}
+}
+@-webkit-keyframes rotateEff
+{
+	0%{ -webkit-transform:scale(1);}
+	50%{-webkit-transform:rotate(60deg);}
+	100%{-webkit-transform:rotate(0deg);}
+}
+@-webkit-keyframes rotateEff2
+{
+	50%{-webkit-transform:rotate(-360deg);}
+	100%{-webkit-transform:rotate(360deg);}
+}
+	
+</style>
+</body>
+</html>
