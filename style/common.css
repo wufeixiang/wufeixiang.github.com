@@ -14,7 +14,9 @@ header,footer
 		padding:5px;
 		font-size:14px;
 		color:#999;
+		z-index:99;
 }
+.back{z-index:100;cursor:pointer;}
 header{top:0;left:0;text-align:left;}
 footer{bottom:0;left:0;}
 nav{width:768px;margin:0 auto;}

@@ -1,57 +1,44 @@
 // JavaScript Document
 $(document).ready(function(e) {
-	initRandomBg();
+	
 });
-var currentBg = 1 ; 
-var maxBg = 20 ;
-var autoPlay = false ; 
-var autoBg ; 
-var timer = 10000 ; 
-var initRandomBg = function()
+
+
+var slideTo = function(src)
 {
-	
-	var bg = "photos/"+currentBg+".jpg";
-	$("#largeBg").css("background-image","url("+bg+")");
-    $(".currentBgIdx").html(currentBg+"/"+maxBg);
-	
-	$('.foreBg').click(function(){
-		nextBg(-1);
-	});
-	$('.nextBg').click(function(){
-		nextBg(1);
-	});
-	$('.bgStatus').click(function(){
-		stopTimer();
-	});
-	
-	stopTimer();
+	//弄点效果
+	$('.loading').show();
+	var currentSrc = $('#iframe').attr("src");
+	saveGoBack(currentSrc);
+	$('#iframe').get(0).contentWindow.location.replace(src);
+	$('.loading').fadeOut();
+	//
+	$('.back').show();
+	//这里再调用html5 history api
+	//history.pushState(null, '', src);
 }
 
-function stopTimer()
+function toHome()
 {
-	if( autoPlay )
-	{
-		clearInterval(autoBg);
-		autoPlay = false ; 
-		$('.bgStatus').html("auto");
-	}
-	else
-	{
-		autoBg = setInterval("nextBg(1)",timer);
-		autoPlay = true ; 
-		$('.bgStatus').html("stop");
-	}
+	var src = "main.html";
+	var currentSrc = $('#iframe').attr("src");
+	if( currentSrc == src ) return ; 
+	$('#iframe').get(0).contentWindow.location.replace(src);
 }
 
-var nextBg = function(idx)
+//这里模拟一下返回操作
+var backArr = [] ; 
+function saveGoBack(src)
 {
-	currentBg += idx ;  
-    if(currentBg ==0 ) currentBg = maxBg ;
-	else if(currentBg == (maxBg+1)) currentBg = 1 ;
-				
-	var bg = "photos/"+currentBg+".jpg";
-	$("#largeBg").hide();
-	$("#largeBg").css("background-image","url("+bg+")");
-	$("#largeBg").fadeIn("slow");
-	$(".currentBgIdx").html(currentBg+"/"+maxBg);
+	backArr.push(src);
+}
+
+function goBack()
+{
+	var src = backArr.pop(); 
+	slideTo(src);
+	if( backArr.length == 0 )
+	{
+		$('.back').hide();
+	}
 }

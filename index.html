@@ -7,172 +7,70 @@
 <script src="tools/js/jquery.js"></script>
 <script src="js/index.js"></script>
 </head>
-
 <style type="text/css">
 * {
 	margin:0;
 	padding:0;
 }
 body {
+	width:100%;
+	height:100%;
 	background:#666;
-}
-#largeBg
-{
-	width:100%;height:100%;
-	position:fixed;
-	left:0;top:0;
-	background:url(photos/1.jpg) fixed no-repeat;
-	background-size:cover;
+	overflow:hidden;
 }
 #container {
 	width:100%;
 	height:100%;
-}
-#center {
-	position:relative;
-	width:768px;
-	margin:100px auto 0;
-}
-.content
-{
-	position:relative;
-	height:450px;
-	background:rgba(0,0,0,.6);
-	border:1px solid #646464;
-	box-shadow:2px 4px 4px rgba(0,0,0,.5);
-}
-
-.blocks
-{
-	margin:30px 25px;
-}
-a.block {
-	width:100px;
-	height:100px;
-	text-align:center;
-	display:block;
+	position:absolute;
+	left:0;
+	top:0;
+	overflow:hidden;
 	float:left;
-	margin:40px 20px;
-	-webkit-box-shadow:2px 2px 10px 1px rgba(0,0,0,.3);
-	-webkit-transition:All 1s ease;
-	-webkit-transform: rotate(0deg)
 }
-a.block:hover {
-	background:#6fd2ff;
-	-webkit-transition:All 1s ease;
-	-webkit-transform: rotate(12deg) scale(1);
-}
-.green {
-	background:#66c010;
-}
-.blue {
-	background:#01acda;
-}
-.grey {
-	background:#ffeeee;
-}
-.imgTitle {
-	font-size:3.5em;
-}
-a:link, a:active, a:visited {
-	color: #fff;
-	text-decoration:none;
-}
-.left_link,.right_link
-{
-	width:147px;
-	height:36px;
-	position:absolute;top:0; 
-	box-sizing:border-box;
-	font-size:14px;
-}
-.left_link
-{
-	background:url(images/tip-lt.png) no-repeat;
-	left:-1px;
-	padding:7px 0 0 27px;
-}
-.right_link
-{
-	background:url(images/tip-rt.png) no-repeat;
-	right:0;
-	padding:7px 0 0 55px;
-}
-.changeBgBt
-{
-	position:absolute;
-	right:0;
-	color:#fff;
-	margin-top:10px;
-}
-.changeBgBt span
-{
-	width:16px;
-	height:16px;
-	line-height:14px;
-	text-align:center;
-	display:inline-block;
-	border:1px solid #999;
-	cursor:pointer;
-}
-.changeBgBt em{font-size:10px;cursor:pointer;margin:0 4px;}
-.skill
-{
-	position:absolute;
-	bottom:0;
-	height:114px;
+.page {
 	width:100%;
-	color:#999;
-	line-height:114px;
-	border-top:1px solid #646464;
+	height:100%;
+	position:relative;
+	float:left;
 }
-.skill .title
+.iframe {
+	width:100%;
+	height:100%;
+	position:absolute;
+	left:0;
+	top:0;
+	padding:30px 0;
+}
+.loading
 {
-	width:106px;
-	text-align:center;
-	display:inline-block;
-	background:url(images/left_arr_line.png) right top no-repeat;
+	display:none;
+	z-index:100;
+	width:100%;
+	height:768px;
+	position:fixed;
+	background:url(images/loading.gif) center no-repeat rgba(0,0,0,.4);
 }
+.back
+{
+	display:none;
+	position:absolute;
+	left:20px;top:0;
+}
+.tips{}
+
 </style>
 <body onselectstart="return false">
-<div id="largeBg"></div>
-<header><nav>享受生活</nav></header>
+<img src="images/back.png" onClick="goBack();" class="back" />
+<header>
+  <nav><span class="tips">享受生活</span></nav>
+</header>
 <div id="container">
-  <div id="center">
-        <div class="content">
-          <span class="left_link"><a href="http://www.cnblogs.com/trying/" target="_blank">我的博客园</a></span>
-          <span class="right_link"><a href="http://blog.csdn.net/wufeixianggo" target="_blank">我的CSDN</a></span>
-          <article class="blocks">
-                <a href="tools/index.html" class="block green"><h1 class="imgTitle">T</h1>tools</a> 
-                <a href="examples/index.html" class="block blue" ><h1 class="imgTitle">E</h1>Examples</a>
-                
-                <a href="examples/index.html" class="block blue" ><h1 class="imgTitle">L</h1>学习资源</a>
-                <a href="examples/index.html" class="block blue" ><h1 class="imgTitle">N</h1>影像生活</a>
-                <a href="examples/index.html" class="block blue" ><h1 class="imgTitle">N</h1>影像生活</a>
-          </article>
-          
-          <div class="skill">
-               <span class="title">技能:</span>
-               <aside></aside>
-          </div>
-          
-        </div>
-        <div class="changeBgBt">
-              <em class="bgStatus">status</em>     
-              <span class="foreBg">&lt;</span>
-              <em class="currentBgIdx"></em>
-              <span class="nextBg">&gt;</span>  
-        </div>
+  <div class="page">
+    <iframe class="iframe" id="iframe" src="main.html" scrolling="no" frameborder="0"></iframe>
   </div>
-  
+  <!--这里加了个page的div是为了做滑动效果，还是不要了，免得占cpu-->
 </div>
-<footer>By ifeixiang 没有版权，共同学习</footer>
-
-<script type="text/javascript">
-    //随机加载背景图片，参考fengniao.com及bing.com
-	$(document).ready(function(e) {
-        
-    });
-</script>
+<footer>By ifeixiang 没有版权，共同学习<a style="color:#fff;margin:0 5px;cursor:pointer;" onClick="toHome();">回到主页</a></footer>
+<div class="loading"></div>
 </body>
 </html>
