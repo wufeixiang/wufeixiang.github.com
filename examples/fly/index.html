@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>CSS3 matrix</title>
+<link href="../styles/common.css" rel="stylesheet" type="text/css">
+</head>
+<script type="text/javascript" src="../js/jquery.js"></script>
+
+<style type="text/css">
+
+.fly
+{
+	position:absolute;
+	top:10px;
+	left:10px;
+	-webkit-animation:fly 2s linear infinite;
+}
+@-webkit-keyframes fly
+{
+	0%{-webkit-transform:translateX(1444px);}
+	20%{-webkit-transform:translateX(1000px);}
+	40%{-webkit-transform:rotate(90deg);}
+	80%{-webkit-transform:translate(200px,-20px);}
+	100%{-webkit-transform:translate(0);}
+}
+
+</style>
+<body>
+<div id="container">
+    <img src="../logo.png" class="fly" />
+</div>
+
+</head>
+</body>
+</html>

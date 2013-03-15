@@ -1,0 +1,216 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Timeline style</title>
+<link href="../styles/common.css" rel="stylesheet" type="text/css">
+</head>
+
+<style type="text/css">
+body {
+	background:url(../../images/1.jpg) fixed;
+	background-size:cover;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:20px;
+	color:#fff;
+}
+#container {
+	width:80%;
+	margin:0 auto;
+}
+#center {
+	/*position:absolute;
+	width:100%;
+	height:100%;
+	top:50%;
+	left:50%;
+	margin:-300px 0 0 -300px;*/
+}
+.timeline_content
+{
+	width:100%;
+	float:left;
+	margin:10px 20px;
+	position:relative;
+}
+.timeline
+{
+	width:3px;
+	height:110%;
+	background:#c8c8c8;
+	position:absolute;
+	box-shadow:1px 1px 4px rgba(0,0,0,.3);
+	left:-23px;
+	top:0;;
+}
+.timeblock
+{
+	width:350px;
+	overflow:hidder;
+	padding:10px 0;
+	background:#fff;
+	border-radius:4px;
+	box-shadow:2px 2px 10px 0 rgba(0,0,0,.6);
+	position:relative;
+	-webkit-transition:all 300ms ease-in-out;
+}
+.timeblock .arrow
+{
+	position:absolute;
+	top:25px;left:0;
+}
+.timeblock .dot
+{
+	width:5px;height:5px;
+	border:2px solid #92cade;
+	border-radius:5px;
+	background:#fff;
+	position:absolute;
+	top:20px;left:-26px;
+}
+.timeblock:hover {
+	-webkit-transform:translateX(10px);
+}
+.timeblock:hover .dot
+{
+	-webkit-transform:scale(2);
+	border:2px solid #d44a26;
+}
+.timeblock .date
+{
+	font-size:40px;
+	width:80px;
+	text-align:center;
+	background:#92cade;
+	border-radius:5px;
+	display:inline-block;
+	margin:0 0 10px 10px;
+}
+.timeblock .text
+{
+	color:#ddd;
+	font-size:24px;
+	margin-left:10px;
+}
+.timeblock img
+{
+	width:100%;
+}
+
+.timeline_end
+{
+	width:10px;height:10px;border-radius:10px;
+	background:#fff;
+	border:2px solid #92cade;
+	position:absolute;
+	bottom:-10%;
+	left:-28px;
+}
+
+@media (min-width: 960px) {
+	#columns {
+		-webkit-column-count: 4;
+		-moz-column-count: 4;
+		column-count: 4;
+	}
+}
+
+@media (min-width: 1100px) {
+	#columns {
+		-webkit-column-count: 5;
+		-moz-column-count: 5;
+		column-count: 5;
+	}
+}
+
+#columns:hover .pin:not(:hover) {
+	opacity: 0.4;
+}
+
+</style>
+<script src="../js/jquery.js" type="text/javascript"></script>
+<script src="../js/jquery.lazyload.js" type="text/javascript"></script>
+<script type="text/javascript">
+    /*document.addEventListener("DOMContentLoaded", loadImgs, false);
+	function loadImgs()
+	{
+		var count = 36 ;
+		var columns = document.getElementById("columns");
+		for( i=1;i<count;i++ )
+		{
+			var pin = document.createElement("div");
+			var img = document.createElement("img");
+			pin.setAttribute("class","pin");
+			img.setAttribute("src","images/"+i+".jpg");
+			pin.appendChild(img);
+		    columns.appendChild(pin);
+		}
+	}*/
+	
+	$(document).ready(
+		function()
+		{
+			count = 36 ; 
+			for( i=1;i<count;++i )
+			{
+				var timeline_content = $('<div></div>',{'class':'timeline_content'}) ;
+				var timeline = $('<div></div>',{'class':'timeline'}) ;
+				timeline_content.append(timeline);
+				var timeblock = $('<div></div>',{'class':'timeblock'}) ;
+				var dot = $('<a></a>',{'href':'#','class':'dot'});
+				var arrow = $('<i></i>',{'class':'arrow arrow_box'});
+				var span = $('<span></span>',{'class':'date'});
+				span.html('P'+i);
+				var b = $('<b></b>',{'class':'text'});
+				b.html('Text'+i);
+				var img = $('<img />',{'src':'images/loading.gif','data-original':'images/'+i+'.jpg','class':'lazy'});
+				timeblock.append(dot);
+				timeblock.append(arrow);
+				timeblock.append(span);
+				timeblock.append(b);
+				timeblock.append(img);
+				
+				timeline_content.append(timeblock);
+				$('#container').append(timeline_content);
+			}
+			var timeline_end = $('<div></div>',{'class':'timeline_end'});
+			$('.timeline_content:last').append(timeline_end);
+			
+		    $("img").lazyload({
+				threshold: 200,
+	            effect : "fadeIn",
+			});	
+		}
+	);
+
+</script>
+<body>
+<div id="container">
+    <!-- <div class="timeline_content">
+          <div class="timeline"></div>
+          <div class="timeblock" id="timestamp">
+              <a href="#timestamp" class="dot"></a>
+              <i class="arrow arrow_box"></i>
+          	  <span class="date">P33</span>
+              <b class="text">Some Text</b>
+              <img src="images/2.jpg" />
+          </div>
+     </div>
+     
+    <div class="timeline_content">
+          <div class="timeline"></div>
+          <div class="timeblock" id="timestamp">
+              <a href="#timestamp" class="dot"></a>
+              <i class="arrow arrow_box"></i>
+          	  <span class="date">P33</span>
+              <b class="text">Some Text</b>
+              <img src="images/2.jpg" />
+          </div>
+          <div class="timeline_end"></div>
+     </div>-->
+     
+</div>
+
+</head>
+</body>
+</html>

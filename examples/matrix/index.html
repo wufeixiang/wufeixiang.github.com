@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>CSS3 matrix</title>
+<link href="../styles/common.css" rel="stylesheet" type="text/css">
+</head>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(e) {
+		/*$('.matrix3').hover(function(){
+			  var deg = 90;
+			  var a = Math.cos(deg);
+			  var b = Math.sin(deg);
+			  var c = -b ;
+			  var d = a ; 
+			  $('.matrix3').css("-webkit-transform","matrix("+a+","+b+","+c+","+d+",230,230)");
+		});*/
+		$('.change').click(
+		      function()
+			  {
+				  if( $('#matrix2').hasClass("matrix1") )
+				  {
+					   $('#matrix2').addClass("matrix2");
+					  $('#matrix2').removeClass("matrix1");
+					  
+					  $('#matrix1').addClass("matrix1");
+					  $('#matrix1').removeClass("matrix2");
+				  }
+				  else{
+					  $('#matrix2').addClass("matrix1");
+					  $('#matrix2').removeClass("matrix2");
+					  
+					  $('#matrix1').addClass("matrix2");
+					  $('#matrix1').removeClass("matrix1");
+				  }
+			  }
+		);
+    });
+</script>
+
+<style type="text/css">
+.block
+{
+	position:absolute;
+	width:200px;
+	height:200px;
+	display:block;
+	margin:10px;
+	-webkit-transition:all 0.5s linear;  
+}
+.matrix1{
+    /* 平移 tanslate( e ,f  ) */
+	top:-20px;
+	-webkit-transform:matrix(0.5,0.2,0,1,0,0);
+	/* tanslateX( e  ) */
+	/*-webkit-transform:matrix(1,0,0,1,30,0);*/
+	/* tanslateY( e  ) */
+	/*-webkit-transform:matrix(1,0,0,1,0,30);	*/
+}
+.matrix2
+{
+	left:150px;
+	z-index:999;
+	/*-webkit-transform:matrix(0.5,0,0,0.5,0,0);*/
+}
+.matrix3
+{
+	right:0;
+	top:-20px;
+	-webkit-transform:matrix(0.5,-0.2,0,1,0,0);
+}
+.matrix4:hover
+{
+    /* 斜切 skew( d ) */
+	/*这里使用tan*/
+	-webkit-transform:matrix(0.9,-0.2,0,1,0,0);
+	
+}
+.gallery
+{
+	margin:100px;
+	position:relative;
+	width:520px;
+}
+</style>
+<body>
+<div id="container">
+   <div class="gallery">
+    <a class="block bg-color-blue matrix1" id="matrix1"></a>
+    <a class="block bg-color-darken matrix2" id="matrix2"></a>
+    <a class="block bg-color-green matrix3" id="matrix3"></a>
+   </div>
+   <a class="change">Change</a>
+</div>
+
+</head>
+</body>
+</html>
