@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Welcome to Wu Feixiang Example Blog</title>
+<title>享受生活</title>
 <link href="style/common.css" rel="stylesheet" type="text/css">
 <script src="tools/js/jquery.js"></script>
 <script src="js/main.js"></script>
@@ -24,15 +24,7 @@ body {
 	background:url(photos/1.jpg) fixed no-repeat;
 	background-size:cover;
 }
-#container {
-	width:100%;
-	height:100%;
-}
-#center {
-	position:relative;
-	width:768px;
-	margin:100px auto 0;
-}
+
 
 .content {
 	position:relative;
@@ -64,6 +56,11 @@ a.block:hover {
 }
 .imgTitle {
 	font-size:3.5em;
+}
+.text
+{
+	position:absolute;
+	bottom:0;
 }
 a:link, a:active, a:visited {
 	color: #fff;
@@ -122,9 +119,61 @@ a:link, a:active, a:visited {
 	display:inline-block;
 	background:url(images/left_arr_line.png) right top no-repeat;
 }
+.skill_content
+{
+	position:absolute;
+	left:106px;
+	top:0;
+	height:100%;
+	width:660px;
+	cursor:pointer;
+}
+.skill_block
+{
+	display:inline-block;
+	text-align:center;
+	width:124px;
+	height:100%;
+	text-shadow:2px 2px 1px #000;
+}
+.skill_block:hover
+{
+	color:#fff;
+}
+.p_title
+{
+	height:80px;
+	line-height:80px;
+	font-size:3.5em;
+}
+.p_text
+{
+	height:30px;
+	line-height:30px;
+	color:#fff;
+}
+.p_title,.p_text
+{
+	display:block;
+}
+<!--c语言系-->
+.c{}
+.web{}
+.more_down
+{
+	width:20px;
+	height:100%;
+	background:url(images/more_down.png) no-repeat center;
+	position:absolute;
+	right:0;
+	top:0;
+	border-left:1px dashed rgba(255,255,255,.1);
+}
+
+.hidden{display:none;}
 </style>
 <body onselectstart="return false">
-<div id="largeBg"></div>
+<div id="largeBg"><img class="hidden preloadImg" src="" /></div>
 
 <div id="container">
   <div id="center">
@@ -135,13 +184,39 @@ a:link, a:active, a:visited {
         <h1 class="imgTitle">E</h1>
         Examples</a> <a tohref="examples/index.html" class="block bg-color-darken" >
         <h1 class="imgTitle">L</h1>
-        学习资源</a> <a tohref="examples/index.html" class="block bg-color-yellow" >
-        <h1 class="imgTitle">N</h1>
-        影像生活</a> <a tohref="examples/index.html" class="block blue" >
-        <h1 class="imgTitle">N</h1>
-        影像生活</a> </article>
+        学习资源</a> 
+        <a tohref="vision/index.html" class="block bg-color-yellow" >
+           <h1 class="imgTitle">V</h1>影像生活
+        </a>
+        <a tohref="vision/index.html" class="block blue" >
+        <h1 class="imgTitle"><></h1>
+        C</a> </article>
       <div class="skill"> <span class="title">技能:</span>
-        <aside></aside>
+        <div class="skill_content">
+            <div class="skill_block tohref" tohref="skills/index.html">
+               <span class="p_title"><></span>
+               <span class="p_text">C</span>
+            </div>
+            <div tohref="examples/index.html" class="skill_block tohref" >
+               <span class="p_title"><></span>
+               <span class="p_text">C++</span>
+            </div>
+            <div tohref="examples/index.html" class="skill_block tohref" >
+               <span class="p_title"><></span>
+               <span class="p_text">Obj-c</span>
+            </div>
+            <div tohref="examples/index.html" class="skill_block blue tohref" >
+               <span class="p_title"><></span>
+               <span class="p_text">C#</span>
+            </div>
+            <div tohref="examples/index.html" class="skill_block blue" >
+               <span class="p_title"><img src="images/perl.png" /></span>
+               <span class="p_text">Perl</span>
+            </div>
+            <span class="more_down"></span>
+            
+        </div>
+        
       </div>
     </div>
     <div class="changeBgBt"> <em class="bgStatus">status</em> <span class="foreBg">&lt;</span> <em class="currentBgIdx"></em> <span class="nextBg">&gt;</span> </div>

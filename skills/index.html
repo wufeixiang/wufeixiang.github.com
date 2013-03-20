@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>享受生活</title>
+<link href="../style/common.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery.js"></script>
+<script src="../js/iscroll.js"></script>
+</head>
+<style type="text/css">
+
+body {
+	background: linear-gradient(white, white 19px, #ddd 19px, #ddd 20px);
+	color:#fff;
+	font-size:14px;
+}
+
+#container {
+	width:100%;
+	height:100%;
+}
+#center {
+	position:relative;
+	width:768px;
+	height:570px;
+	margin:40px auto 0;
+	padding:0 10px 0 45px;
+	z-index:1;
+	overflow:visible; 
+}
+.skillList li
+{
+	display:block;
+	height:100px;
+	margin:0 5px 15px 0;
+	padding:5px 10px;
+	position:relative;
+}
+.charTitle
+{
+	position:absolute;
+	left:-40px;
+	width:40px;
+	top:0;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	box-shadow:-2px 2px 2px rgba(0,0,0,0.2);
+}
+</style>
+<body>
+<div id="container">
+  <div id="center">
+     <div id="scroller" class="skillList">
+       <ul>
+          <li class="bg-color-blue" tohref="c"><span class="charTitle bg-color-blue">C</span>这里是关于C语言的描述</li>
+          <li class="bg-color-orange" tohref="c++"><span class="charTitle bg-color-orange">C++</span></li>
+          <li class="bg-color-blue" tohref="c#"><span class="charTitle bg-color-red">C#</span></li>
+          <li class="bg-color-blue" tohref="perl"><span class="charTitle bg-color-yellow">Perl</span></li>
+          <li class="bg-color-blue"><span class="charTitle bg-color-purple">C</span></li>
+          <li><span class="charTitle">C</span></li>
+          <li><span class="charTitle">C</span></li>
+          <li><span class="charTitle">C</span></li>
+       </ul>
+      </div> 
+  </div>
+</div>
+<script>
+   function loaded() {
+	   document.addEventListener('touchmove', function(e){ e.preventDefault(); });
+	   var myScroll = new iScroll('center',  { useTransition:true, hScrollbar: false, vScrollbar: true });
+    }
+   document.addEventListener('DOMContentLoaded', loaded);
+   
+   $('.skillList li').click(
+	   function(){
+		   var href = $(this).attr("tohref")+"/index.html";
+		   parent.slideTo(href);
+	   }
+	);
+   
+   
+</script>
+</body>
+</html>

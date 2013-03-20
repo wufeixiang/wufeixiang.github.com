@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Welcome to Wu Feixiang Example Blog</title>
+<title>Welcome to Wu Feixiang's Blog</title>
 <link href="style/common.css" rel="stylesheet" type="text/css">
 <script src="tools/js/jquery.js"></script>
 <script src="js/index.js"></script>
@@ -38,7 +38,7 @@ body {
 	height:100%;
 	position:absolute;
 	left:0;
-	top:0;
+	box-sizing:border-box;
 	padding:30px 0;
 }
 .loading
@@ -54,7 +54,7 @@ body {
 {
 	display:none;
 	position:absolute;
-	left:20px;top:0;
+	left:20px;top:2px;
 }
 .tips{}
 
@@ -66,7 +66,7 @@ body {
 </header>
 <div id="container">
   <div class="page">
-    <iframe class="iframe" id="iframe" src="main.html" scrolling="no" frameborder="0"></iframe>
+    <iframe class="iframe" id="iframe" src="main.html" frameborder="0"></iframe>
   </div>
   <!--这里加了个page的div是为了做滑动效果，还是不要了，免得占cpu-->
 </div>

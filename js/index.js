@@ -36,7 +36,12 @@ function saveGoBack(src)
 function goBack()
 {
 	var src = backArr.pop(); 
-	slideTo(src);
+	
+	//弄点效果
+	$('.loading').show();
+	$('#iframe').get(0).contentWindow.location.replace(src);
+	$('.loading').fadeOut();
+	
 	if( backArr.length == 0 )
 	{
 		$('.back').hide();

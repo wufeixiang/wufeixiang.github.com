@@ -5,9 +5,10 @@ $(document).ready(function(e) {
 });
 function initAClick()
 {
-	$('.block').click(function()
+	$('.block,.tohref').click(function()
 	{
 		var href = $(this).attr("tohref");
+		//alert(href);
 		parent.slideTo(href);
 	});
 }
@@ -18,13 +19,13 @@ var currentBg = 1 ;
 var maxBg = 20 ;
 var autoPlay = false ; 
 var autoBg ; 
-var timer = 10000 ; 
+var timer = 20000 ; 
 var initRandomBg = function()
-{
-	
+{ 
 	var bg = "photos/"+currentBg+".jpg";
 	$("#largeBg").css("background-image","url("+bg+")");
-    $(".currentBgIdx").html(currentBg+"/"+maxBg);
+	
+	$(".currentBgIdx").html(currentBg+"/"+maxBg);
 	
 	$('.foreBg').click(function(){
 		nextBg(-1);
@@ -64,6 +65,13 @@ var nextBg = function(idx)
 	var bg = "photos/"+currentBg+".jpg";
 	$("#largeBg").hide();
 	$("#largeBg").css("background-image","url("+bg+")");
+	
+	//这里图片第一次加载会有点慢，用一个隐藏的标签预先加载第二张图片
+	var preload_bg =  "photos/"+(currentBg+1)+".jpg";
+	if( currentBg == maxBg ) preload_bg =  "photos/"+1+".jpg";
+	$('.preloadImg').attr("src",preload_bg);
+    
+	
 	$("#largeBg").fadeIn("slow");
 	$(".currentBgIdx").html(currentBg+"/"+maxBg);
 }
