@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <title>Pinterest</title>
+<link href="../style/common.css" rel="stylesheet" type="text/css">
 </head>
+
 <style type="text/css">
 * {
 	margin:0;
@@ -23,7 +25,13 @@ body {
 /*这里准备加上不同的相册*/
 footer
 {
-	
+	margin:0;
+	padding:0;
+	position:fixed;
+	bottom:0;
+	width:100%;
+	height:90px;
+	text-align:center;
 }
 #columns
 {
@@ -81,6 +89,50 @@ footer
 	opacity: 0.4;
 }
 
+.album
+{
+	width:100px;
+	color:#fff;
+	float:left;
+	position:relative;
+	overflow:hidden;
+	margin:2px;
+	opacity:0.5;
+	-webkit-transition:all .3s ease-in-out;
+}
+.album:hover
+{
+	opacity:1;
+}
+.album img
+{
+	border:2px solid #ddd;
+	border-radius:10px;
+}
+.album:hover img
+{
+	border-color:#fff;
+}
+.album .album_title
+{
+	position:absolute;
+	top:40%;
+	left:40%;
+	text-shadow:1px 1px 1px rgba(0,0,0,0.5);
+	
+}
+.hide_arrow,.show_arrow
+{
+	font-size:5em;
+	position:fixed;
+	bottom:0;
+	z-index:999;
+	letter-spacing:-10px;
+}
+.hide_arrow{
+	right:0;
+}
+.show_arrow{left:0;display:none;background:rgba(0,0,0,.5);}
 </style>
 <script src="../js/jquery.js" type="text/javascript"></script>
 <script src="../js/jquery.exif.js" type="text/javascript"></script>
@@ -89,25 +141,46 @@ footer
 	$(document).ready(
 		function()
 		{
-			count = 19 ; 
-			var defaultVision = "建筑"
-			for( i=1;i<count;++i )
+			$(".album").click(function()
 			{
-				var pin = $('<div></div>',{'class':'pin'}) ;
-				var img_src = 'photos/'+defaultVision+'/'+i+'.jpg' ;
-				
-				
-			    var img = $('<img />',{'src':'../images/loading.gif','data-original': img_src,'class':'lazy img'});
-				pin.append(img);
-				var img_info ="<div class='img_info'><img src='../images/loading.gif' /></div>" ;
-				pin.append(img_info);
-				$('#columns').append(pin);
-			}
-			
-			mylazy();
+				 var vision = $(this).attr("vision");
+				 var count = $(this).attr("count");
+				 init_img(vision,count);
+			});
+			$(".album").eq(0).click();
 		}
 	);
-	
+	function showAhide(show,hide)
+	{
+		$(show).show();
+		$(hide).hide();
+		$("footer").toggle("slow");
+	}
+	function show_album()
+	{
+		showAhide(".hide_arrow",".show_arrow");
+	}
+	function hide_album()
+	{
+		showAhide(".show_arrow",".hide_arrow");
+	}
+	var init_img = function(vision,count)
+	{
+		$('#columns').html("");
+		for( i=1;i<=count;++i )
+		{
+			var pin = $('<div></div>',{'class':'pin'}) ;
+			var img_src = 'photos/'+vision+'/'+i+'.jpg' ;
+			
+			
+			var img = $('<img />',{'src':'../images/loading.gif','data-original': img_src,'class':'lazy img'});
+			pin.append(img);
+			var img_info ="<div class='img_info'></div>" ;
+			pin.append(img_info);
+			$('#columns').append(pin);
+		}
+		mylazy();
+	};
 	var mylazy = function()
 	{
 		$("img.lazy").lazyload({
@@ -120,6 +193,7 @@ footer
 	}
 	function setPhoto_info(ele)
 	{
+		
 		//获取图片的Exif信息
 		var info = "" ;
 		var model = "" ; 
@@ -130,12 +204,19 @@ footer
 		{
 			//这里还可以获取更多的参数，参见exif的信息格式 
 			model = $this.exif("Model");
+			if(model == "") model = "无"; 
 			fnumber = $this.exif("FNumber");
+			if(fnumber == "") fnumber = "无"; 
 			time = $this.exif("ExposureTime");
+			if(time == "") time = "无";
+			else
+			{
+				if( time<1 ) time = "1/" + Math. round(1/time) ;
+		     	else time += "s" ;
+			}
 			iso = $this.exif("ISOSpeedRatings");
+			if(iso == "") iso = "无"; 
 			
-			if( time<1 ) time = "1/" + Math. round(1/time) ;
-			else time += "s" ;
 			
 			var img_info = "<span>型号:<em class='model'>"+model+"</em></span>"+
 			"<span>光圈:<em class='fNumber'>"+fnumber+"</em></span>"+
@@ -151,6 +232,29 @@ footer
     
   </div>
 </div>
-<footer></footer>
+<footer>
+        <div class="album" vision="建筑" count="29">
+            <img src="photos/icon/5.jpg" />
+            <span class="album_title">建筑</span>
+        </div>
+        <div class="album" vision="人像" count="105">
+            <img src="photos/icon/3.jpg" />
+            <span class="album_title">人像</span>
+        </div>
+        <div class="album" vision="自然" count="69">
+            <img src="photos/icon/1.jpg" />
+            <span class="album_title">自然</span>
+        </div>
+        <div class="album" vision="风光" count="1">
+            <img src="photos/icon/2.jpg" />
+            <span class="album_title">风光</span>
+        </div>
+        <div class="album" vision="随写" count="20">
+            <img src="photos/icon/4.jpg" />
+            <span class="album_title">随写</span>
+        </div>
+</footer>
+<span class="hide_arrow" onClick="hide_album();">&lt;&lt;</span>
+<span class="show_arrow" onClick="show_album();">&gt;&gt;</span>
 </body>
 </html>

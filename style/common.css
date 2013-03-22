@@ -37,7 +37,7 @@ header,footer
 header{top:0;left:0;text-align:left;}
 footer{bottom:0;left:0;}
 nav{width:768px;margin:0 auto;}
-
+img{border:none;}
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
 *{margin:0;padding:0;}
 a:hover,a:active,a:link{outline:0;text-decoration:none;}
