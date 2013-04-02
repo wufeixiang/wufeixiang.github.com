@@ -22,10 +22,10 @@ var autoBg ;
 var timer = 20000 ; 
 var initRandomBg = function()
 { 
-	var bg = "photos/"+currentBg+".jpg";
-	$("#largeBg").css("background-image","url("+bg+")");
-	
 	$(".currentBgIdx").html(currentBg+"/"+maxBg);
+	
+	var preload_bg =  "photos/"+(currentBg+1)+".jpg";
+	$('.preloadImg').attr("src",preload_bg);
 	
 	$('.foreBg').click(function(){
 		nextBg(-1);

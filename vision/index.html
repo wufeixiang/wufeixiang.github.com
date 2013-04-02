@@ -132,7 +132,11 @@ footer
 .hide_arrow{
 	right:0;
 }
-.show_arrow{left:0;display:none;background:rgba(0,0,0,.5);}
+footer,.hide_arrow
+{
+	display:none;
+}
+.show_arrow{left:0;background:rgba(0,0,0,.5);}
 </style>
 <script src="../js/jquery.js" type="text/javascript"></script>
 <script src="../js/jquery.exif.js" type="text/javascript"></script>
@@ -200,6 +204,7 @@ footer
 		var fnumber = "" ;
 		var time = "" ;
 		var iso = "" ; 
+		var mode = "" ; 
 		var $this = $(ele).exifLoad(function()
 		{
 			//这里还可以获取更多的参数，参见exif的信息格式 
@@ -216,12 +221,15 @@ footer
 			}
 			iso = $this.exif("ISOSpeedRatings");
 			if(iso == "") iso = "无"; 
+			mode = $this.exif("MeteringMode");
+			if(mode == "") mode = "无"; 
 			
 			
 			var img_info = "<span>型号:<em class='model'>"+model+"</em></span>"+
 			"<span>光圈:<em class='fNumber'>"+fnumber+"</em></span>"+
 			"<br /><span>快门:<em class='ex_time'>"+time+"</em></span>"+
-			"<span>ISO:<em class='iso'>"+iso+"</em></span>";
+			"<span>ISO:<em class='iso'>"+iso+"</em></span>"+
+			"<span>测光模式:<em class='mode'>"+mode+"</em></span>";
 			$(ele).parent().find(".img_info").html(img_info);
 		});
 	}
