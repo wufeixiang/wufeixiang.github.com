@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <title>Welcome to Wu Feixiang's Blog</title>
-<link href="style/common.css" rel="stylesheet" type="text/css">
-<script src="tools/js/jquery.js"></script>
-<script src="js/index.js"></script>
+<link href="public/style/common.css" rel="stylesheet" type="text/css">
+<script src="public/js/jquery.js"></script>
+<script src="public/js/index.js"></script>
 </head>
 <style type="text/css">
 * {
@@ -48,7 +48,7 @@ body {
 	width:100%;
 	height:768px;
 	position:fixed;
-	background:url(images/loading.gif) center no-repeat rgba(0,0,0,.4);
+	background:url(public/images/loading.gif) center no-repeat rgba(0,0,0,.4);
 }
 .back
 {
@@ -60,9 +60,9 @@ body {
 
 </style>
 <body onselectstart="return false">
-<img src="images/back.png" onClick="goBack();" class="back" />
+<img src="public/images/back.png" onClick="goBack();" class="back" />
 <header>
-  <nav><span class="tips">享受生活——基于backbone.js重新开发</span></nav>
+  <nav><span class="tips">享受生活</span></nav>
 </header>
 <div id="container">
   <div class="page">
@@ -70,7 +70,7 @@ body {
   </div>
   <!--这里加了个page的div是为了做滑动效果，还是不要了，免得占cpu-->
 </div>
-<footer>By ifeixiang 没有版权，共同学习<a style="color:#fff;margin:0 5px;cursor:pointer;" onClick="toHome();">回到主页</a></footer>
+<footer>By wufeixiang，共同学习<a style="color:#fff;margin:0 5px;cursor:pointer;" onClick="toHome();">回到主页</a></footer>
 <div class="loading"></div>
 </body>
 </html>

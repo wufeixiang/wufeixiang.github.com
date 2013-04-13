@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Welcome to Wu Feixiang Example Blog</title>
+<link href="../../public/style/common.css" rel="stylesheet">
+<script type="text/javascript" src="../../public/js/jquery.js"></script>
+</head>
+<style type="text/css">
+body{
+	background:#fff;
+}
+.wrapper
+{
+	margin:50px auto;
+	width:600px;
+}
+.inputWrapper
+{
+	margin:20px 0;
+}
+.block
+{
+	padding:10px 20px;
+	color:#fff;
+	display:block;
+	cursor:pointer;
+	display:inline-block;
+}
+textarea
+{
+	padding:10px;
+	width:100%;
+	height:200px;
+}
+
+.title
+{
+	font-size:20px;
+	color:#999;
+	text-align:left;
+	padding:4px 0;
+}
+.list
+{
+	margin:0 0 0 50px; 
+}
+.list li
+{
+	margin:5px 0;
+	cursor:pointer;
+}
+.code
+{
+	display:none;
+	font-style:italic;
+	padding:0 4px;
+	margin:0 5px;
+	color:#0CF;
+}
+#pattern
+{
+	padding:10px;
+	width:100%;
+	font-size:20px;
+}
+#highlight{background:#f00;}
+</style>
+<script>
+    $(document).ready(function(e) {
+        showcode();
+		initClick();
+    });
+	function showcode()
+	{
+		$('.list li').click(function()
+		{
+			$(this).find(".code").toggle("slow");
+		});
+	}
+	function initClick()
+	{
+		$("#match").click(function()
+		{
+			var text = $("#text").val();
+			var highlight_text = text ; 
+			var pattern = $("#pattern").val();
+			var reg = new RegExp(pattern);
+		    var matches = text.match(reg);
+			for( var i = 0 ; i < matches.length ; ++i )
+			{
+				highlight_text.replace(matches[i],"<span class=\"highlight\">$1</span>")
+			}
+			$("#result").html(highlight_text);
+		});
+	}
+	
+</script>
+<body>
+     <div class="wrapper">
+       <aside class="leftbar">
+          <h3>常用正则匹配</h3>
+          <ul class="list">
+             <li>空行<span class="code">\n\s*\r</span></li>
+             <li>中文<span class="code">[\u4e00-\u9fa5]</span></li>
+             <li>邮箱<span class="code">some codes here</span></li>
+             <li>文件名<span class="code">some codes here</span></li>
+             <li>子文件夹名<span class="code">some codes here</span></li>
+             <li>etc...</li>
+          </ul>
+       </aside>
+       <div class="inputWrapper">
+           <h1 class="title">字符串</h1>
+           <textarea name="text" id="text"></textarea>
+           <h1 class="title">正则表达式</h1>
+           <input id="pattern"></input>
+       </div>
+       <span id="match" class="block bg-color-blue" onClick="generateCode();">匹配</span>
+       <span id="replace" class="block bg-color-blue" onClick="generateCode();">替换</span> 
+       <div id="result"></div>
+     </div> 
+</body>
+</html>

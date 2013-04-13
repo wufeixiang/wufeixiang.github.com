@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <title>Pinterest</title>
-<link href="../style/common.css" rel="stylesheet" type="text/css">
+<link href="../public/style/common.css" rel="stylesheet" type="text/css">
 </head>
 
 <style type="text/css">
@@ -12,7 +12,7 @@
 	padding:0;
 }
 body {
-	background:url(../images/beige_paper.png);
+	background:url(../public/images/beige_paper.png);
 	font-family:"Microsoft Yahei";
 	font-size:0.8em;
 	color:#999;
@@ -138,22 +138,28 @@ footer,.hide_arrow
 }
 .show_arrow{left:0;background:rgba(0,0,0,.5);}
 </style>
-<script src="../js/jquery.js" type="text/javascript"></script>
-<script src="../js/jquery.exif.js" type="text/javascript"></script>
-<script src="../js/jquery.lazyload.js" type="text/javascript"></script>
+<script src="../public/js/jquery.js" type="text/javascript"></script>
+<script src="../public/js/jquery.exif.js" type="text/javascript"></script>
+<script src="../public/js/jquery.lazyload.js" type="text/javascript"></script>
 <script type="text/javascript">
+	var config_xml = "config.xml";
 	$(document).ready(
 		function()
 		{
-			$(".album").click(function()
-			{
-				 var vision = $(this).attr("vision");
-				 var count = $(this).attr("count");
-				 init_img(vision,count);
-			});
-			$(".album").eq(0).click();
+			init_albums();
 		}
 	);
+	
+	function init_albums()
+	{
+		$(".album").click(function()
+		{
+			 var vision = $(this).attr("vision");
+			 var count = $(this).attr("count");
+			 init_img(vision,count);
+		});
+		$(".album").eq(0).click();
+	}
 	function showAhide(show,hide)
 	{
 		$(show).show();
@@ -177,7 +183,7 @@ footer,.hide_arrow
 			var img_src = 'photos/'+vision+'/'+i+'.jpg' ;
 			
 			
-			var img = $('<img />',{'src':'../images/loading.gif','data-original': img_src,'class':'lazy img'});
+			var img = $('<img />',{'src':'../public/images/loading.gif','data-original': img_src,'class':'lazy img'});
 			pin.append(img);
 			var img_info ="<div class='img_info'></div>" ;
 			pin.append(img_info);

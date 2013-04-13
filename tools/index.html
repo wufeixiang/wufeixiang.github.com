@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <title>Welcome to Wu Feixiang Example Blog</title>
-<link href="styles/common.css" rel="stylesheet">
+<link href="../public/style/common.css" rel="stylesheet">
+<script src="../public/js/jquery.js"></script>
 </head>
 <style type="text/css">
 * {
@@ -11,7 +12,7 @@
 	padding:0;
 }
 body {
-	background:url(images/bgmetro.png) repeat;
+	background:url(../public/images/bgmetro.png) repeat;
 	font-family:Tahoma, Helvetica, 'SimSun', sans-serif;
 	font-size:20px;
 	color:#fff;
@@ -44,10 +45,21 @@ a:link, a:active, a:visited {
 </style>
 <body>
 <div id="container">
-  <div id="center">
-    <a href="qrcode/index.html" class="block bg-color-green"><h1 class="imgTitle">Q</h1>Qrcode Generator</a> 
-  </div>
+    <a href="qrcode/index.html" class="block bg-color-green"><h1 class="imgTitle">Q</h1>Qrcode Generator</a>
+    <a href="regex/index.html" class="block bg-color-blue"><h1 class="imgTitle">R</h1>Regex</a>  
 </div>
-</head>
+<script type="text/javascript">
+    $(document).ready(
+		function()
+		{
+			$('a').live('click',function()
+			  {
+				  event.preventDefault();
+				  var href = $(this).attr("href");
+				  parent.slideTo(href);
+			  });
+		}
+	);
+</script>
 </body>
 </html>

@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <title>Welcome to Wu Feixiang Example Blog</title>
-<link href="styles/common.css" rel="stylesheet">
+<link href="../public/style/common.css" rel="stylesheet">
+<script src="../public/js/jquery.js"></script>
 </head>
 <style type="text/css">
 * {
@@ -11,7 +12,7 @@
 	padding:0;
 }
 body {
-	background:url(images/bgmetro.png) repeat;
+	background:url(../public/images/bgmetro.png) repeat;
 	font-family:Tahoma, Helvetica, 'SimSun', sans-serif;
 	font-size:20px;
 	color:#fff;
@@ -64,8 +65,22 @@ a:link, a:active, a:visited {
     <a href="hoverEffects/index.html" class="block bg-color-yellow" ><h1 class="imgTitle">H</h1>Hover Effects</a>
     <a href="timeline/index.html" class="block bg-color-blue" ><h1 class="imgTitle">T</h1>Timeline</a>
     <a href="HighLighter/index.html" class="block bg-color-darken" ><h1 class="imgTitle">T</h1>Highlighter</a>
+    <a href="historyApi/index.html" class="block bg-color-darken" ><h1 class="imgTitle">H</h1>HistoryApi</a>
   </div>
 </div>
-</head>
+<script type="text/javascript">
+    $(document).ready(
+		function()
+		{
+			$('#center a').live('click',function()
+			  {
+				  event.preventDefault();
+				  var href = $(this).attr("href");
+				  parent.slideTo(href);
+			  });
+		}
+	);
+</script>
+
 </body>
 </html>
