@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Slider</title>
+<style type="text/css">
+*{margin:0;padding:0;}
+ul,li{list-style:none;}
+body{
+	font-family:"Microsoft Yahei",Arial, Helvetica, sans-serif;
+	overflow: hidden;/*这里内容过多会出现竖向滚动条*/
+} 
+	/*
+	* first , we set a page cover the full screen
+	* we get 5 test pages , so , the sum width is 5*100% ; 
+	*/
+#wrapper
+{
+	height:100%;
+	overflow:hidden;
+}
+.pages
+{
+	height: 100%;
+	position:relative;
+}
+.pages li
+{
+	position: relative;
+	height: 100%;
+	float: left;
+	background:#fff;  
+}
+.pages img
+{
+	min-width:100%;
+	min-height:100%;
+}
+.pageNumber
+{
+	position:fixed;
+	right:0;
+	top:0;
+	padding:10px 40px; 
+	text-align:center;
+	background:rgba(0,0,0,.5);
+	color:#fff;
+}
+.currentPage
+{
+	color:#F00;
+	margin:0 10px;
+}
+</style>
+
+</head>
+<body>
+<div id="wrapper">
+    <div class="pages">
+          <ul>
+             <li><img src="images/1.jpg" /></li>
+             <li><img src="images/2.jpg" /></li>
+             <li><img src="images/1.jpg" /></li>
+             <li><img src="images/3.jpg" /></li>
+             <li><img src="images/4.jpg" /></li>
+             <li><img src="images/3.jpg" /></li>
+             <li><img src="images/4.jpg" /></li>
+             <li><img src="images/5.jpg" /></li>
+             <li><img src="images/5.jpg" /></li>
+             <li><img src="images/1.jpg" /></li>
+             <li><img src="images/1.jpg" /></li>
+             <li><img src="images/1.jpg" /></li>
+             <li><img src="images/1.jpg" /></li>
+             <li><img src="images/3.jpg" /></li>
+             <li><img src="images/4.jpg" /></li>
+             <li><img src="images/5.jpg" /></li>
+          </ul>
+    </div>
+</div>
+<div class="pageNumber">
+    <span class="currentPage"></span>/
+    <span class="totalPage"></span>
+</div>
+<!--代码高亮工具--> 
+<script type="text/javascript" src="../../public/js/jquery.js"></script> 
+<script type="text/javascript" src="../../public/js/iscroll.js"></script> 
+<script type="text/javascript">
+var myScroll;
+
+function loaded() {
+	var length = $(".pages li").length ; 
+	$(".pages").css("width",length*100+"%");
+	$(".pages li").css("width",100/length+"%");
+	
+	$(".currentPage").text("1");
+	$(".totalPage").text(length);
+	
+	myScroll = new iScroll('wrapper', {
+		snap: true,
+		momentum: false,
+		hScrollbar: false,
+		onScrollEnd: function () {
+			var current = (this.currPageX+1) ; 
+			$(".currentPage").text(current);
+		}
+	 });
+}
+document.addEventListener('DOMContentLoaded', loaded, false);
+</script>
+
+
+</body>
+</html>

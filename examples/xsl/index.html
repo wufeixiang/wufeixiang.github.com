@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>通过xsl组织数据及显示</title>
+<link href="../../public/style/common.css" rel="stylesheet" type="text/css" />
+</head>
+<script type="text/javascript" src="../../public/js/jquery.js"></script>
+<script type="text/javascript" src="xslParser.js"></script>
+<script>
+$(function() {
+   $('#xsl').xslt("data.xml", "view.xsl");
+});
+</script>
+<body>
+<div id="xsl">
+
+</div>
+</body>
+</html>
