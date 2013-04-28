@@ -1,11 +1,11 @@
 // JavaScript Document
 $(document).ready(function(e) {
-	window.onpopstate = function(event){
+	/*window.onpopstate = function(event){
 		//alert(history.state);
 		if ( backArr.length > 0 ){
 		     goBack();
 		}
-	}
+	}*/
 });
 //这里模拟一下返回操作
 var backArr = [] ; 
@@ -42,7 +42,7 @@ var slideTo = function(src)
 	$('#iframe').get(0).contentWindow.location.replace(src);
 	$('.back').show();
 	//这里再调用html5 history api
-	history.pushState(null, '标题', src);
+	//history.pushState(null, '标题', src);
 	
 	$('.loading').fadeOut();
 }

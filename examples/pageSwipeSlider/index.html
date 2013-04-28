@@ -9,11 +9,10 @@ ul,li{list-style:none;}
 body{
 	font-family:"Microsoft Yahei",Arial, Helvetica, sans-serif;
 	overflow: hidden;/*这里内容过多会出现竖向滚动条*/
+	text-align:center;
 } 
-	/*
-	* first , we set a page cover the full screen
-	* we get 5 test pages , so , the sum width is 5*100% ; 
-	*/
+
+/*外部上下滑的slider*/
 #wrapper
 {
 	height:100%;
@@ -22,20 +21,43 @@ body{
 .pages
 {
 	height: 100%;
-	position:relative;
 }
-.pages li
+.hswipe .hitem
 {
-	position: relative;
 	height: 100%;
 	float: left;
 	background:#fff;  
+	display:block;
 }
-.pages img
+
+.hswipe img
 {
 	min-width:100%;
 	min-height:100%;
 }
+
+/*内部上下滑的slider*/
+#vWrapper
+{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+.vpages
+{
+	position:absolute; 
+	z-index:1;/*注意要加这个*/
+}
+.vswipe .vitem
+{
+}
+.vswipe .vitem img
+{
+	min-width:1024px;
+	min-height:768px;
+}
+
+/*页码*/
 .pageNumber
 {
 	position:fixed;
@@ -56,24 +78,25 @@ body{
 </head>
 <body>
 <div id="wrapper">
-    <div class="pages">
+    <div class="pages hswipe">
           <ul>
-             <li><img src="images/1.jpg" /></li>
-             <li><img src="images/2.jpg" /></li>
-             <li><img src="images/1.jpg" /></li>
-             <li><img src="images/3.jpg" /></li>
-             <li><img src="images/4.jpg" /></li>
-             <li><img src="images/3.jpg" /></li>
-             <li><img src="images/4.jpg" /></li>
-             <li><img src="images/5.jpg" /></li>
-             <li><img src="images/5.jpg" /></li>
-             <li><img src="images/1.jpg" /></li>
-             <li><img src="images/1.jpg" /></li>
-             <li><img src="images/1.jpg" /></li>
-             <li><img src="images/1.jpg" /></li>
-             <li><img src="images/3.jpg" /></li>
-             <li><img src="images/4.jpg" /></li>
-             <li><img src="images/5.jpg" /></li>
+             <li class="hitem">
+                 <div id="vwrapper">
+                     <div class="vpages vswipe">
+                          <ul>
+                             <li class="vitem"><img src="images/2.jpg" /></li>
+                             <li class="vitem"><img src="images/1.jpg" /></li>
+                             <li class="vitem"><img src="images/3.jpg" /></li>
+                             <li class="vitem"><img src="images/4.jpg" /></li>
+                             <li class="vitem"><img src="images/3.jpg" /></li>
+                           </ul>
+                     </div>
+                 </div>
+             </li>
+             <li class="hitem"><img src="images/2.jpg" /></li>
+             <li class="hitem"><img src="images/1.jpg" /></li>
+             <li class="hitem"><img src="images/3.jpg" /></li>
+             <li class="hitem"><img src="images/4.jpg" /></li>
           </ul>
     </div>
 </div>
@@ -88,14 +111,14 @@ body{
 var myScroll;
 
 function loaded() {
-	var length = $(".pages li").length ; 
+	var length = $(".pages .hitem").length ; 
 	$(".pages").css("width",length*100+"%");
-	$(".pages li").css("width",100/length+"%");
+	$(".pages .hitem").css("width",100/length+"%");
 	
 	$(".currentPage").text("1");
 	$(".totalPage").text(length);
 	
-	myScroll = new iScroll('wrapper', {
+	var hScroll = new iScroll('wrapper', {
 		snap: true,
 		momentum: false,
 		hScrollbar: false,
@@ -104,6 +127,23 @@ function loaded() {
 			$(".currentPage").text(current);
 		}
 	 });
+	 
+	 //vscroll 
+	// var vlength = $(".vpages .vitem").length ; 
+	//$(".vpages").css("height",vlength*100+"%");
+	//$(".vpages .vitem").css("height",100/length+"%");
+	
+	 var vScroll = new iScroll('vwrapper', {
+		snap: true,
+		momentum: false,
+		hScrollbar: false,
+		vScrollbar: false,
+		onScrollEnd: function () {
+			//var current = (this.currPageX+1) ; 
+			//$(".currentPage").text(current);
+		}
+	 });
+	 
 }
 document.addEventListener('DOMContentLoaded', loaded, false);
 </script>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Slider</title>
+<style type="text/css">
+*{margin:0;padding:0;}
+ul,li{list-style:none;}
+body{
+	font-family:"Microsoft Yahei",Arial, Helvetica, sans-serif;
+	overflow: hidden;/*这里内容过多会出现竖向滚动条*/
+} 
+/*内部上下滑的slider*/
+#wrapper
+{
+	width:100%;
+	overflow:hidden;
+}
+
+.scroller
+{
+	position:absolute; z-index:1;
+}
+#wrapper1,#wrapper2,#wrapper3
+{
+	width:100%;
+	height:200px;
+	overflow:hidden;
+}
+.scroller1,.scroller2,.scroller3
+{
+	width:400%;
+	height:100%;
+	float:left;
+	z-index:1;
+}
+.scroller1 li, .scroller2 li, .scroller3 li 
+{
+	width:25%;
+	height:100%;
+	float:left;
+	text-align:center;
+}
+
+</style>
+
+</head>
+<body>
+<div id="wrapper">
+   <div class="scroller">
+        <div id="wrapper1">
+           <div class="scroller1">
+               <ul>
+                     <li><img src="images/1.jpg" /></li>
+                     <li><img src="images/2.jpg" /></li>
+                     <li><img src="images/3.jpg" /></li>
+                     <li><img src="images/4.jpg" /></li>
+                     <li><img src="images/3.jpg" /></li>
+               </ul>
+           </div>
+        </div>
+        
+        <div id="wrapper2">
+           <div class="scroller2">
+               <ul>
+                     <li><img src="images/1.jpg" /></li>
+                     <li><img src="images/2.jpg" /></li>
+                     <li><img src="images/3.jpg" /></li>
+                     <li><img src="images/4.jpg" /></li>
+                     <li><img src="images/3.jpg" /></li>
+               </ul>
+           </div>
+        </div>
+        
+        <div id="wrapper3">
+           <div class="scroller3">
+               <ul>
+                     <li><img src="images/1.jpg" /></li>
+                     <li><img src="images/2.jpg" /></li>
+                     <li><img src="images/3.jpg" /></li>
+                     <li><img src="images/4.jpg" /></li>
+                     <li><img src="images/3.jpg" /></li>
+               </ul>
+           </div>
+        </div>
+        
+   </div>
+</div>
+<!--代码高亮工具--> 
+<script type="text/javascript" src="../../public/js/jquery.js"></script> 
+<script type="text/javascript" src="../../public/js/iscroll.js"></script> 
+<script type="text/javascript">
+var myScroll;
+
+function loaded() {
+	 var myscroll = new iScroll('wrapper');
+	 var hScroll1 = new iScroll('wrapper1', {
+		snap: true,
+		momentum: false,
+		hScrollbar: false,
+		onScrollEnd: function () {
+			
+		}
+	 });
+	 
+	 var hScroll2 = new iScroll('wrapper2', {
+		snap: true,
+		momentum: false,
+		hScrollbar: false,
+		onScrollEnd: function () {
+			
+		}
+	 });
+	 
+	 var hScroll3 = new iScroll('wrapper3', {
+		snap: true,
+		momentum: false,
+		hScrollbar: false,
+		onScrollEnd: function () {
+			
+		}
+	 });
+	 
+}
+document.addEventListener('DOMContentLoaded', loaded, false);
+</script>
+
+
+</body>
+</html>
