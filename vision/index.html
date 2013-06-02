@@ -147,6 +147,7 @@ footer,.hide_arrow
 		function()
 		{
 			init_albums();
+			init_img_click();
 		}
 	);
 	
@@ -183,7 +184,7 @@ footer,.hide_arrow
 			var img_src = 'photos/'+vision+'/'+i+'.jpg' ;
 			
 			
-			var img = $('<img />',{'src':'../public/images/loading.gif','data-original': img_src,'class':'lazy img'});
+			var img = $('<img />',{'src':'../public/images/loading.gif','data-original': img_src,'class':'lazy img','pid':i});
 			pin.append(img);
 			var img_info ="<div class='img_info'></div>" ;
 			pin.append(img_info);
@@ -191,6 +192,12 @@ footer,.hide_arrow
 		}
 		mylazy();
 	};
+	
+	var init_img_click = function()
+	{
+		$("")
+	}
+	
 	var mylazy = function()
 	{
 		$("img.lazy").lazyload({
