@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--direction: 0为横向，1为竖向-->
+<swipes direction="0">
+    <item>
+	    <img>images/1.jpg</img>
+	    <img>images/2.jpg</img>
+	    <img>images/1.jpg</img>
+	    <img>images/2.jpg</img>
+	</item>
+    <item>
+	    <img>images/1.jpg</img>
+	    <img>images/2.jpg</img>
+	    <img>images/1.jpg</img>
+	    <img>images/2.jpg</img>
+	</item>
+	<item>
+	    <img>images/1.jpg</img>
+	    <img>images/2.jpg</img>
+	    <img>images/1.jpg</img>
+	    <img>images/2.jpg</img>
+	</item>
+	<item>
+	    <img>images/1.jpg</img>
+	    <img>images/2.jpg</img>
+	    <img>images/1.jpg</img>
+	    <img>images/2.jpg</img>
+	</item>
+</swipes>

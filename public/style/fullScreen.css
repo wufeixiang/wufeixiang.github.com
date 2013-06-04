@@ -1,0 +1,43 @@
+
+#fullScreen
+{
+	display:none;
+	position:absolute;
+	left:0;top:0;
+	width:100%;height:100%;
+	background:#323232 !important;
+	z-index:200;
+}
+#wrapper
+{
+	width:100%;height:100%;
+	overflow:hidden;
+	text-align:center;
+}
+
+#iscroll_list > li
+{
+	float:left;
+	height:100%;
+	position:relative;
+	overflow:hidden;
+	padding:5px 0; 
+	display: table-cell;
+	vertical-align: middle;
+}
+#iscroll_list > li > img
+{
+	box-shadow:0 0 5px 5px rgba(0,0,0,0.5);
+	margin:10px;
+}
+
+.close
+{
+	position:fixed;
+	right:0;
+	top:0;
+	background:rgba(0,0,0,.5);
+	padding:20px 30px;
+	font-size:2em;
+	color:#fff;
+}
