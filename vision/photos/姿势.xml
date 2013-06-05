@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <xdb version="201365">
+      <xrs>
+<rs><id>1</id><label>show_mop (1)</label><filename>vision/photos/姿势/show_mop (1).jpg</filename></rs>
+<rs><id>2</id><label>show_mop (2)</label><filename>vision/photos/姿势/show_mop (2).jpg</filename></rs>
+<rs><id>3</id><label>show_mop (3)</label><filename>vision/photos/姿势/show_mop (3).jpg</filename></rs>
+<rs><id>4</id><label>show_mop (4)</label><filename>vision/photos/姿势/show_mop (4).jpg</filename></rs>
+<rs><id>5</id><label>show_mop (5)</label><filename>vision/photos/姿势/show_mop (5).jpg</filename></rs>
+<rs><id>6</id><label>show_mop (6)</label><filename>vision/photos/姿势/show_mop (6).jpg</filename></rs>
+<rs><id>7</id><label>show_mop</label><filename>vision/photos/姿势/show_mop.jpg</filename></rs>
+      </xrs>
+   </xdb>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <xdb version="201365">
+      <xrs>
+<rs><id>1</id><label>1</label><filename>vision/photos/icon/1.jpg</filename></rs>
+<rs><id>2</id><label>2</label><filename>vision/photos/icon/2.jpg</filename></rs>
+<rs><id>3</id><label>3</label><filename>vision/photos/icon/3.jpg</filename></rs>
+<rs><id>4</id><label>4</label><filename>vision/photos/icon/4.jpg</filename></rs>
+<rs><id>5</id><label>5</label><filename>vision/photos/icon/5.jpg</filename></rs>
+      </xrs>
+   </xdb>

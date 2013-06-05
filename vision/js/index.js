@@ -10,8 +10,9 @@ function init_albums()
 	$(".album").click(function()
 	{
 		 var vision = $(this).attr("vision");
-		 var count = $(this).attr("count");
-		 init_img(vision,count);
+		 var vision_xml = "photos/"+vision+".xml";
+		 
+		 init_img(vision_xml);
 	});
 	$(".album").eq(0).click();
 }
@@ -29,23 +30,28 @@ function hide_album()
 {
 	showAhide(".show_arrow",".hide_arrow");
 }
-var init_img = function(vision,count)
+var init_img = function(xml)
 {
 	$('#columns').html("");
-	for( i=1;i<=count;++i )
+	var html = ""  ;
+	$.ajax(
 	{
-		var path = "vision/photos/"+vision;
-		var pin = $('<div></div>',{'class':'pin','path':path,'pageid':i,'total':count}) ;
-		var img_src = 'photos/'+vision+'/'+i+'.jpg' ;
-		
-		
-		var img = $('<img />',{'src':'../public/images/loading.gif','data-original': img_src,'class':'lazy img'});
-		pin.append(img);
-		var img_info ="<div class='img_info'></div>" ;
-		pin.append(img_info);
-		$('#columns').append(pin);
-	}
-	mylazy();
+		url:xml,
+		dataType:"xml",
+		success:function(data){
+			$(data).find("rs").each(function(index, element) {
+                var img_src = $(this).children("filename").text() ;
+				img_src = img_src.replace("vision/","");
+				var pin = $('<div></div>',{'class':'pin','xml':"vision/"+xml,'pageid':index}) ;
+				var img = $('<img />',{'src':'../public/images/loading.gif','data-original': img_src,'class':'lazy img'});
+				pin.append(img);
+				var img_info ="<div class='img_info'></div>" ;
+				pin.append(img_info);
+				$('#columns').append(pin);
+            });
+		    mylazy();
+		},
+	});
 };
 var mylazy = function()
 {
@@ -100,10 +106,9 @@ function init_img_click()
 {
 	$(".pin").live("click",function()
 	{
-		var path = $(this).attr("path");
+		var path = $(this).attr("xml");
 		var pageid = $(this).attr("pageid");
-		var total = $(this).attr("total");
-		parent.fullScreen(path,total,pageid);
+		parent.fullScreen(path,pageid);
 		
 	});
 }
