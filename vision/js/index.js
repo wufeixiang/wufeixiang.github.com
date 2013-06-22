@@ -38,6 +38,7 @@ var init_img = function(xml)
 	{
 		url:xml,
 		dataType:"xml",
+		//async:false, //如果要ajax返回内部变量，需要设置成同步
 		success:function(data){
 			$(data).find("rs").each(function(index, element) {
                 var img_src = $(this).children("filename").text() ;
