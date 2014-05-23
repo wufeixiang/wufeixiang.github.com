@@ -6,7 +6,7 @@ $(document).ready(function(e) {
 });
 function initAClick()
 {
-	$('.block,.tohref').live('click',function()
+	$('.block,.tohref').on('click',function()
 	{
 		event.preventDefault();
 		var href = $(this).attr("href");

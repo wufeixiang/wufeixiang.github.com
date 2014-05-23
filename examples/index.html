@@ -77,7 +77,7 @@ a:link, a:active, a:visited {
     $(document).ready(
 		function()
 		{
-			$('#center a').live('click',function()
+			$(document).on('click','#center a',function()
 			  {
 				  event.preventDefault();
 				  var href = $(this).attr("href");

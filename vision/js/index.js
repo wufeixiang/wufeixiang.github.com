@@ -105,7 +105,7 @@ function setPhoto_info(ele)
 
 function init_img_click()
 {
-	$(".pin").live("click",function()
+	$(document).on("click",".pin",function()
 	{
 		var path = $(this).attr("xml");
 		var pageid = $(this).attr("pageid");
