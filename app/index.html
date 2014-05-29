@@ -41,6 +41,36 @@
     </div>
   </div>
 </div>
+<div class="app-page" data-page="view">
+  <div class="app-topbar blue">
+    <div class="app-button left" data-back data-autotitle></div>
+    <div class="app-title">浏览</div>
+  </div>
+  <div class="app-content">
+    <div class="app-button red" data-target="view-detail" data-target-args='{"album":"人像","max":"99"}'>人像</div>
+    <div class="app-button" data-target="view-detail" data-target-args='{"album":"建筑","max":"145"}'>建筑</div>
+    <div class="app-button green" data-target="view-detail" data-target-args='{"album":"风光","max":"1"}'>风光</div>
+    <div class="app-button" data-target="view-detail" data-target-args='{"album":"随写","max":"20"}'>随写</div>
+    <div class="app-button green" data-target="view-detail" data-target-args='{"album":"自然","max":"70"}'>自然</div>
+  </div>
+</div>
+</div>
+<div class="app-page" data-page="view-detail">
+  <div class="app-topbar blue">
+    <div class="app-button left" data-back data-autotitle></div>
+    <div class="app-title">浏览</div>
+  </div>
+  <div class="app-content">
+    <div class="app-button loading">loading</div>
+    <div class="col-sm-4 col-md-4 app-list" style="margin:4px 0;">
+      <div class="thumbnail"> <img class="lazy" src="" alt="...">
+        <div class="caption">
+          <div class="btn-group btn-group-justified"> <a type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span></a> <a type="button" class="btn btn-default"><span class="glyphicon glyphicon-share"></span></a> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!--基础知识-->
 <div class="app-page" data-page="base">
@@ -61,6 +91,38 @@
 <script>
       App.controller('home', function (page) {
         // put stuff here
+      });
+	  
+	  App.controller('view-detail', function (page , argu) {
+		  var album = argu.album ; 
+		  var _max = argu.max ; 
+		  
+          $(page).find('.app-title').text(album);
+          
+		  var $loading  = $(page).find('.loading'),
+					$list     = $(page).find('.app-list'),
+					$listItem = $(page).find('.app-list>div'),
+					i = 1 , _per = 10  ;
+			var dir = "../vision/photos/"+album+"/";
+				$loading.remove();
+				$listItem.remove();
+
+				App.infiniteScroll($list, { loading: $loading }, function (callback) {
+					if( _max < _per ) _per = _max ; 
+					if (i > _max) {
+						return null;
+					}
+					setTimeout(function () {
+						var list = [];
+						for (var j=0; j<_per; j++) {
+							var $node = $listItem.clone();
+							$node.find('.lazy').attr("src",dir+(j+i)+".jpg");
+							list.push($node);
+						}
+						i += 10;
+						callback(list);
+					}, 1200);
+				});
       });
 
       App.controller('good', function (page) {
