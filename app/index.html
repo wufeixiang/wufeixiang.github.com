@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="../public/bootstrap3/css/bootstrap.css">
+<link rel="stylesheet" href="app.min.css">
+<style></style>
+</head>
+
+<body>
+<div class="app-page" data-page="home">
+  <div class="app-topbar blue">
+    <div class="app-title">主页</div>
+  </div>
+  <div class="app-content">
+    <div class="app-section">
+      <div class="app-button red" data-target="good">推荐</div>
+      <div class="app-button " data-target="view">浏览</div>
+    </div>
+    <div class="app-section">
+      <div class="app-button green" data-target="base"><span class="glyphicon glyphicon-search"></span>基础</div>
+      <div class="app-button blue" data-target="tips">Tips</div>
+      <div class="app-button red" data-target="post">姿势</div>
+    </div>
+  </div>
+</div>
+<div class="app-page" data-page="good">
+  <div class="app-topbar blue">
+    <div class="app-button left" data-back data-autotitle></div>
+    <div class="app-title">推荐</div>
+  </div>
+  <div class="app-content">
+    <div class="app-button loading">loading</div>
+    <div class="col-sm-4 col-md-4 app-list" style="margin:4px 0;">
+      <div class="thumbnail"> <img class="lazy" src="" alt="...">
+        <div class="caption">
+          <div class="btn-group btn-group-justified"> <a type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span></a> <a type="button" class="btn btn-default"><span class="glyphicon glyphicon-share"></span></a> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--基础知识-->
+<div class="app-page" data-page="base">
+  <div class="app-topbar blue">
+    <div class="app-button left" data-back data-autotitle></div>
+    <div class="app-title">基础知识</div>
+  </div>
+  <div class="app-content">
+    <div class="app-section">
+      <div class="app-button green" data-target="base"><span class="glyphicon glyphicon-search"></span>光圈</div>
+      <div class="app-button blue" data-target="tips">快门</div>
+      <div class="app-button red" data-target="post">曝光</div>
+    </div>
+  </div>
+</div>
+<script src="zepto.js"></script> 
+<script src="app.min.js"></script> 
+<script>
+      App.controller('home', function (page) {
+        // put stuff here
+      });
+
+      App.controller('good', function (page) {
+        // put stuff here
+			var $loading  = $(page).find('.loading'),
+					$list     = $(page).find('.app-list'),
+					$listItem = $(page).find('.app-list>div'),
+					i = 1 , _max = 99 , _per = 10  ;
+			var dir = "../vision/photos/人像/";
+				$loading.remove();
+				$listItem.remove();
+
+				App.infiniteScroll($list, { loading: $loading }, function (callback) {
+					if (i >= _max) {
+						return null;
+					}
+					setTimeout(function () {
+						var list = [];
+						for (var j=0; j<_per; j++) {
+							var $node = $listItem.clone();
+							$node.find('.lazy').attr("src",dir+(j+i)+".jpg");
+							list.push($node);
+						}
+						i += 10;
+						callback(list);
+					}, 1200);
+				});
+      });
+
+      try {
+        App.restore();
+      } catch (err) {
+        App.load('home');
+      }
+    </script>
+</body>
+</html>
