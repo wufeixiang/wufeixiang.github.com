@@ -56,6 +56,7 @@ a:link, a:active, a:visited {
 <body>
 <div id="container">
   <div id="center">
+    <a href="fileupload/index.html" class="block bg-color-blue"><h1 class="imgTitle">F</h1>File Upload</a> 
     <a href="cloud/moveCloud.html" class="block bg-color-green"><h1 class="imgTitle">C</h1>Move Cloud</a> 
     <a href="pageSlider/pageSlider.html" class="block bg-color-blue" ><h1 class="imgTitle">S</h1>Page Slider</a>
     <a href="navigation/index.html" class="block bg-color-purple" ><h1 class="imgTitle">B</h1>Bubble Effect</a>
@@ -67,7 +68,8 @@ a:link, a:active, a:visited {
     <a href="HighLighter/index.html" class="block bg-color-darken" ><h1 class="imgTitle">T</h1>Highlighter</a>
     <a href="historyApi/index.html" class="block bg-color-darken" ><h1 class="imgTitle">H</h1>HistoryApi</a>
     <a href="backbonejs/index.html" class="block bg-color-blue" ><h1 class="imgTitle">B</h1>Backbonejs</a>
-    <a href="pageSwipeSlider/index.html" class="block bg-color-green"><h1 class="imgTitle">S</h1>SwipeSlider</a>
+    <a href="pageSwipeSlider/index.html" class="block bg-color-green"><h1 class="imgTitle">HS</h1>horizonalSwipeSlider</a>
+    <a href="pageSwipeSlider/index.html" class="block bg-color-green"><h1 class="imgTitle">VS</h1>verticalSwipeSlider</a>
     <a href="manySwipeSlider/index.html" class="block bg-color-blue"><h1 class="imgTitle">S</h1>ManySwipeSlider</a>  
   </div>
 </div>
@@ -75,7 +77,7 @@ a:link, a:active, a:visited {
     $(document).ready(
 		function()
 		{
-			$('#center a').live('click',function()
+			$(document).on('click','#center a',function()
 			  {
 				  event.preventDefault();
 				  var href = $(this).attr("href");

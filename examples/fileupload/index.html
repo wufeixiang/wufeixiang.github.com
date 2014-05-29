@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=620">
+<title>HTML5 Demo: Drag and drop, automatic upload</title>
+<script src="../../public/js/jquery.js"></script>
+<script src="uploader.js"></script>
+</head>
+<body>
+<section id="wrapper">
+<header>
+  <h1>Drag and drop, automatic upload</h1>
+</header>
+<style>
+#holder { border: 10px dashed #ccc; width: 300px; min-height: 300px; margin: 20px auto;}
+#holder.hover { border: 10px dashed #0c0; }
+#holder img { display: block; margin: 10px auto; }
+#holder p { margin: 10px; font-size: 14px; }
+progress { width: 100%; }
+progress:after { content: '%'; }
+.fail { background: #c00; padding: 2px; color: #fff; }
+.hidden { display: none !important;}
+</style>
+<article>
+  <div id="holder"> </div>
+  <p id="upload" class="hidden">
+    <label>Drag & drop not supported, but you can still upload via this input field:<br>
+      <input type="file">
+    </label>
+  </p>
+  结果:<p id="result">
+  </p>
+</article>
+<script>
+var holder = document.getElementById('holder'),
+    acceptedTypes = {
+      'image/png': true,
+      'image/jpeg': true,
+      'image/gif': true
+    };
+holder.ondragover = function () { this.className = 'hover'; return false; };
+holder.ondragend = function () { this.className = ''; return false; };
+holder.ondrop = function (e) {
+    this.className = '';
+    e.preventDefault();
+    readfiles(e.dataTransfer.files);
+}
+
+</script>
+</body>
+</html>

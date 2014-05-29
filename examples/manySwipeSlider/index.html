@@ -4,125 +4,264 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Slider</title>
 <style type="text/css">
-*{margin:0;padding:0;}
-ul,li{list-style:none;}
-body{
-	font-family:"Microsoft Yahei",Arial, Helvetica, sans-serif;
-	overflow: hidden;/*这里内容过多会出现竖向滚动条*/
-} 
-/*内部上下滑的slider*/
-#wrapper
-{
-	width:100%;
-	overflow:hidden;
+*{padding:0;margin:0;box-sizing:border-box;}
+body,ul,li {
+    padding:0;
+    margin:0;
+    border:0;
+}
+body {
+    font-size:12px;
+    -webkit-user-select:none;
+    -webkit-text-size-adjust:none;
+    font-family:helvetica;
+}
+/*最外层的wrapper*/
+#wrapper {
+	position:absolute;top:0;bottom:0;left:0;/*这里需要设置这几个，防止iscroll高度设置错误*/
+    
+	width:100%;/*高度不用设置，iscroll会自动设置*/
+    overflow:hidden;
 }
 
-.scroller
-{
-	position:absolute; z-index:1;
+#scroller {
+    position:absolute; z-index:1;
+/*    -webkit-touch-callout:none;*/
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    width:100%;
+    padding:0;
 }
-#wrapper1,#wrapper2,#wrapper3
-{
-	width:100%;
-	height:200px;
-	overflow:hidden;
+#scroller li {
+    border-bottom:1px solid #ccc;
+    background-color:#fafafa;
 }
-.scroller1,.scroller2,.scroller3
-{
-	width:400%;
-	height:100%;
+
+/* 里面的Wrapper 1 */
+.wrapper{
+    width:100%;
+    height:100%;
+    position:relative;    /* On older OS versions "position" and "z-index" must be defined, */
+    z-index:1;            /* it seems that recent webkit is less picky and works anyway. */
+    overflow:hidden;
+}
+.scroller{
+    /*width:400%;*/
+    height:100%;
+    float:left;
+    padding:0;
+}
+
+.scroller li{
+    display:block;
 	float:left;
-	z-index:1;
-}
-.scroller1 li, .scroller2 li, .scroller3 li 
-{
-	width:25%;
+    width:25%; 
 	height:100%;
-	float:left;
+    text-align:center;
+}
+
+.nav{
+	position:absolute;
+	bottom:0;
+	left:0;
 	text-align:center;
+    width:100%;
+    float:left;
+    height: 30px;
+	background:rgba(0,0,0,.5);
 }
+
+.pre, .next {
+    font-weight:bold;
+    font-size:18px;
+    padding:40px 10px;
+	background:rgba(0,0,0,.2);
+    position: absolute;
+	top:30%;
+	z-index:2;
+}
+.next{right: 0;}
+.pre{left: 0;}
+
+.indicator > li {
+    display:block; float:left;
+    list-style:none;
+    padding:0; margin:0;
+}
+
+.indicator-wrapper {
+    overflow: visible;
+    width: auto;
+    height: auto;
+    float: left;
+    position: relative;
+    left: 50%;
+	z-index:2;
+}
+
+ul.indicator {
+    width:auto;
+    padding:10px 0 0 0;
+    margin: 0 auto;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    float:left;
+    margin: 0 0 0 -50%;
+}
+
+.indicator > li{
+    text-indent:-9999em;
+    width:8px; height:8px;
+    border-radius:4px;
+    background:#ddd;
+    overflow:hidden;
+    margin-right:4px;
+}
+
+.indicator > li.active{
+    background:#888;
+}
+
+.indicator > li:last-child{
+    margin:0;
+}
+
 
 </style>
 
 </head>
 <body>
 <div id="wrapper">
-   <div class="scroller">
-        <div id="wrapper1">
-           <div class="scroller1">
-               <ul>
-                     <li><img src="images/1.jpg" /></li>
-                     <li><img src="images/2.jpg" /></li>
-                     <li><img src="images/3.jpg" /></li>
-                     <li><img src="images/4.jpg" /></li>
-                     <li><img src="images/3.jpg" /></li>
-               </ul>
-           </div>
+    <div id="scroller">
+        <!-- wrapper one -->
+        <div id="wrapper1" class="wrapper">
+            <div id="scroller1" class="scroller">
+                <ul>
+                    <li><img src="images/1.jpg" /></li>
+                    <li><img src="images/1.jpg" /></li>
+                    <li><img src="images/1.jpg" /></li>
+                    <li><img src="images/1.jpg" /></li>
+                </ul>
+            </div>
+            <div class="pre" onclick="myScroll1.scrollToPage('prev', 0);return false">&larr; prev</div>
+            <div class="next" onclick="myScroll1.scrollToPage('next', 0);return false">next &rarr;</div>
+            <div class="nav">
+                <div class="indicator-wrapper">
+                    <ul class="indicator" id="indicator1">
+                        <li class="active">1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                    </ul>
+                </div>
+             </div>
         </div>
         
-        <div id="wrapper2">
-           <div class="scroller2">
-               <ul>
-                     <li><img src="images/1.jpg" /></li>
-                     <li><img src="images/2.jpg" /></li>
-                     <li><img src="images/3.jpg" /></li>
-                     <li><img src="images/4.jpg" /></li>
-                     <li><img src="images/3.jpg" /></li>
-               </ul>
-           </div>
+        
+        <!-- wrapper two -->
+        <div id="wrapper2" class="wrapper">
+            <div id="scroller2" class="scroller">
+                <ul>
+                    <li><img src="images/1.jpg" /></li>
+                    <li><img src="images/1.jpg" /></li>
+                    <li><img src="images/1.jpg" /></li>
+                    <li><img src="images/1.jpg" /></li>
+                </ul>
+            </div>
+            <div class="pre" onclick="myScroll2.scrollToPage('prev', 0);return false">&larr; prev</div>
+            <div class="next" onclick="myScroll2.scrollToPage('next', 0);return false">next &rarr;</div>
+            <div class="nav">
+                  <div class="indicator-wrapper">
+                      <ul class="indicator" id="indicator2">
+                          <li class="active">1</li>
+                          <li>2</li>
+                          <li>3</li>
+                          <li>4</li>
+                      </ul>
+                  </div>
+             </div>
         </div>
         
-        <div id="wrapper3">
-           <div class="scroller3">
-               <ul>
-                     <li><img src="images/1.jpg" /></li>
-                     <li><img src="images/2.jpg" /></li>
-                     <li><img src="images/3.jpg" /></li>
-                     <li><img src="images/4.jpg" /></li>
-                     <li><img src="images/3.jpg" /></li>
-               </ul>
-           </div>
-        </div>
-        
-   </div>
+    </div>
 </div>
-<!--代码高亮工具--> 
 <script type="text/javascript" src="../../public/js/jquery.js"></script> 
-<script type="text/javascript" src="../../public/js/iscroll.js"></script> 
+<script type="text/javascript" src="../../public/js/iscroll.js"></script>
+<script type="text/javascript" src="iscroll_ex.js"></script>  
 <script type="text/javascript">
 var myScroll;
+var myScroll1;
+var myScroll2;
+
+//iscroll数组
+var myscroll = [] ;
+function initIscrolls()
+{
+	var html = "<div id=\"wrapper\"><div></div>" ; 
+	$.ajax(
+		{
+			url:'swipe.xml',
+			dataType:'xml',
+			success:function(data)
+			{
+				var swipes = $("swipes")[0];
+				var direction = $(data).find(swipes).attr("direction");
+				direction == "0" ? build_iscroll_vertical(data) : build_iscroll_horizontal(data)  ;
+			}
+		}
+	);
+}
+function build_iscroll_vertical(data)
+{
+	//先写html
+	$(data).find("item").each(function(index, element) {
+        var html = "" ; 
+		$(this).find("img").each(function(index, element) {
+            var src = $(this).text();
+			html += "<li><img src='"+src+"'</li>" ;
+        });
+    });
+}
+
 
 function loaded() {
-	 var myscroll = new iScroll('wrapper');
-	 var hScroll1 = new iScroll('wrapper1', {
-		snap: true,
-		momentum: false,
-		hScrollbar: false,
-		onScrollEnd: function () {
-			
-		}
-	 });
-	 
-	 var hScroll2 = new iScroll('wrapper2', {
-		snap: true,
-		momentum: false,
-		hScrollbar: false,
-		onScrollEnd: function () {
-			
-		}
-	 });
-	 
-	 var hScroll3 = new iScroll('wrapper3', {
-		snap: true,
-		momentum: false,
-		hScrollbar: false,
-		onScrollEnd: function () {
-			
-		}
-	 });
-	 
+    //这里先设置宽度和高度
+	var length = $("#wrapper > #scroller > div ").length ; 
+	$(".wrapper").css("width",length*100+"%");
+	$(".pages .hitem").css("width",100/length+"%");
+	
+	
+    myScroll = new iScroll('wrapper', {
+        snap: true,
+        momentum: false,
+        hScrollbar: false,
+        onScrollEnd: function () {
+        }
+     });
+	
+    myScroll1 = new iScroll('wrapper1', {
+        snap: true,
+        momentum: false,
+        hScrollbar: false,
+        onScrollEnd: function () {
+            //document.querySelector('#indicator1 > li.active').className = '';
+            //document.querySelector('#indicator1 > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+        }
+     });
+     
+     myScroll2 = new iScroll('wrapper2', {
+        snap: true,
+        momentum: false,
+        hScrollbar: false,
+        onScrollEnd: function () {
+        }
+     });
+
 }
-document.addEventListener('DOMContentLoaded', loaded, false);
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+
+
 </script>
 
 

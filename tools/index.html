@@ -52,7 +52,7 @@ a:link, a:active, a:visited {
     $(document).ready(
 		function()
 		{
-			$('a').live('click',function()
+			$('a').on('click',function()
 			  {
 				  event.preventDefault();
 				  var href = $(this).attr("href");
