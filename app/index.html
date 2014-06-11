@@ -1,162 +1,234 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>My App</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-<link rel="stylesheet" href="../public/bootstrap3/css/bootstrap.css">
-<link rel="stylesheet" href="app.min.css">
-<style></style>
-</head>
+	<head>
+		<title>My App</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-<body>
-<div class="app-page" data-page="home">
-  <div class="app-topbar blue">
-    <div class="app-title">主页</div>
-  </div>
-  <div class="app-content">
-    <div class="app-section">
-      <div class="app-button red" data-target="good">推荐</div>
-      <div class="app-button " data-target="view">浏览</div>
-    </div>
-    <div class="app-section">
-      <div class="app-button green" data-target="base"><span class="glyphicon glyphicon-search"></span>基础</div>
-      <div class="app-button blue" data-target="tips">Tips</div>
-      <div class="app-button red" data-target="post">姿势</div>
-    </div>
-  </div>
-</div>
-<div class="app-page" data-page="good">
-  <div class="app-topbar blue">
-    <div class="app-button left" data-back data-autotitle></div>
-    <div class="app-title">推荐</div>
-  </div>
-  <div class="app-content">
-    <div class="app-button loading">loading</div>
-    <div class="col-sm-4 col-md-4 app-list" style="margin:4px 0;">
-      <div class="thumbnail"> <img class="lazy" src="" alt="...">
-        <div class="caption">
-          <div class="btn-group btn-group-justified"> <a type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span></a> <a type="button" class="btn btn-default"><span class="glyphicon glyphicon-share"></span></a> </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="app-page" data-page="view">
-  <div class="app-topbar blue">
-    <div class="app-button left" data-back data-autotitle></div>
-    <div class="app-title">浏览</div>
-  </div>
-  <div class="app-content">
-    <div class="app-button red" data-target="view-detail" data-target-args='{"album":"人像","max":"99"}'>人像</div>
-    <div class="app-button" data-target="view-detail" data-target-args='{"album":"建筑","max":"145"}'>建筑</div>
-    <div class="app-button green" data-target="view-detail" data-target-args='{"album":"风光","max":"1"}'>风光</div>
-    <div class="app-button" data-target="view-detail" data-target-args='{"album":"随写","max":"20"}'>随写</div>
-    <div class="app-button green" data-target="view-detail" data-target-args='{"album":"自然","max":"70"}'>自然</div>
-  </div>
-</div>
-</div>
-<div class="app-page" data-page="view-detail">
-  <div class="app-topbar blue">
-    <div class="app-button left" data-back data-autotitle></div>
-    <div class="app-title">浏览</div>
-  </div>
-  <div class="app-content">
-    <div class="app-button loading">loading</div>
-    <div class="col-sm-4 col-md-4 app-list" style="margin:4px 0;">
-      <div class="thumbnail"> <img class="lazy" src="" alt="...">
-        <div class="caption">
-          <div class="btn-group btn-group-justified"> <a type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span></a> <a type="button" class="btn btn-default"><span class="glyphicon glyphicon-share"></span></a> </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="bootstrap3/css/bootstrap.css">
+		<link href="css/flat-ui.css" rel="stylesheet">
+		<link rel="stylesheet" href="app.min.css">
+		<style></style>
+	</head>
 
-<!--基础知识-->
-<div class="app-page" data-page="base">
-  <div class="app-topbar blue">
-    <div class="app-button left" data-back data-autotitle></div>
-    <div class="app-title">基础知识</div>
-  </div>
-  <div class="app-content">
-    <div class="app-section">
-      <div class="app-button green" data-target="base"><span class="glyphicon glyphicon-search"></span>光圈</div>
-      <div class="app-button blue" data-target="tips">快门</div>
-      <div class="app-button red" data-target="post">曝光</div>
-    </div>
-  </div>
-</div>
-<script src="zepto.js"></script> 
-<script src="app.min.js"></script> 
-<script>
-      App.controller('home', function (page) {
-        // put stuff here
-      });
-	  
-	  App.controller('view-detail', function (page , argu) {
-		  var album = argu.album ; 
-		  var _max = argu.max ; 
-		  
-          $(page).find('.app-title').text(album);
-          
-		  var $loading  = $(page).find('.loading'),
-					$list     = $(page).find('.app-list'),
-					$listItem = $(page).find('.app-list>div'),
-					i = 1 , _per = 10  ;
-			var dir = "../vision/photos/"+album+"/";
+	<body>
+		<div class="app-page" data-page="home">
+			<div class="app-topbar blue">
+				<div class="app-title">
+					主页
+				</div>
+			</div>
+			<div class="app-content">
+				<div class="container">
+					<div class="row-fluid">
+						<div class="col-md-12 col-xs-12 block bg-color-red">
+							人像
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="col-md-8 col-xs-8 block bg-color-green">
+							人像
+						</div>
+						<div class="col-md-4 col-xs-4 block bg-color-orange">
+							生态
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="col-md-6 col-xs-6 block bg-color-blue">
+							建筑
+						</div>
+						<div class="col-md-6 col-xs-6 block bg-color-purple">
+							自然
+						</div>
+					</div>
+				</div>
+
+				<div class="app-section">
+					<div class="app-button red" data-target="good">
+						推荐
+					</div>
+					<div class="app-button " data-target="view">
+						浏览
+					</div>
+				</div>
+				<div class="app-section">
+					<div class="app-button green" data-target="base">
+						<span class="glyphicon glyphicon-search"></span>基础
+					</div>
+					<div class="app-button blue" data-target="tips">
+						Tips
+					</div>
+					<div class="app-button red" data-target="post">
+						姿势
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="app-page" data-page="good">
+			<div class="app-topbar blue">
+				<div class="app-button left" data-back data-autotitle></div>
+				<div class="app-title">
+					推荐
+				</div>
+			</div>
+			<div class="app-content">
+				<div class="app-button loading">
+					loading
+				</div>
+				<div class="col-sm-4 col-md-4 app-list" style="margin:4px 0;">
+					<div class="thumbnail">
+						<img class="lazy" src="" alt="...">
+						<div class="caption">
+							<div class="btn-group btn-group-justified">
+								<a type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span></a><a type="button" class="btn btn-default"><span class="glyphicon glyphicon-share"></span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="app-page" data-page="view">
+			<div class="app-topbar blue">
+				<div class="app-button left" data-back data-autotitle></div>
+				<div class="app-title">
+					浏览
+				</div>
+			</div>
+			<div class="app-content">
+				<div class="app-button red" data-target="view-detail" data-target-args='{"album":"人像","max":"99"}'>
+					人像
+				</div>
+				<div class="app-button" data-target="view-detail" data-target-args='{"album":"建筑","max":"145"}'>
+					建筑
+				</div>
+				<div class="app-button green" data-target="view-detail" data-target-args='{"album":"风光","max":"1"}'>
+					风光
+				</div>
+				<div class="app-button" data-target="view-detail" data-target-args='{"album":"随写","max":"20"}'>
+					随写
+				</div>
+				<div class="app-button green" data-target="view-detail" data-target-args='{"album":"自然","max":"70"}'>
+					自然
+				</div>
+			</div>
+		</div>
+		</div>
+		<div class="app-page" data-page="view-detail">
+			<div class="app-topbar blue">
+				<div class="app-button left" data-back data-autotitle></div>
+				<div class="app-title">
+					浏览
+				</div>
+			</div>
+			<div class="app-content">
+				<div class="app-button loading">
+					loading
+				</div>
+				<div class="col-sm-4 col-md-4 app-list" style="margin:4px 0;">
+					<div class="thumbnail">
+						<img class="lazy" src="" alt="...">
+						<div class="caption">
+							<div class="btn-group btn-group-justified">
+								<a type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span></a><a type="button" class="btn btn-default"><span class="glyphicon glyphicon-share"></span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--基础知识-->
+		<div class="app-page" data-page="base">
+			<div class="app-topbar blue">
+				<div class="app-button left" data-back data-autotitle></div>
+				<div class="app-title">
+					基础知识
+				</div>
+			</div>
+			<div class="app-content">
+				<div class="app-section">
+					<div class="app-button green" data-target="base">
+						<span class="glyphicon glyphicon-search"></span>光圈
+					</div>
+					<div class="app-button blue" data-target="tips">
+						快门
+					</div>
+					<div class="app-button red" data-target="post">
+						曝光
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="zepto.js"></script>
+		<script src="app.min.js"></script>
+		<script>
+			App.controller('home', function(page) {
+				// put stuff here
+			});
+
+			App.controller('view-detail', function(page, argu) {
+				var album = argu.album;
+				var _max = argu.max;
+
+				$(page).find('.app-title').text(album);
+
+				var $loading = $(page).find('.loading'), $list = $(page).find('.app-list'), $listItem = $(page).find('.app-list>div'), i = 1, _per = 10;
+				var dir = "../vision/photos/" + album + "/";
 				$loading.remove();
 				$listItem.remove();
 
-				App.infiniteScroll($list, { loading: $loading }, function (callback) {
-					if( _max < _per ) _per = _max ; 
+				App.infiniteScroll($list, {
+					loading : $loading
+				}, function(callback) {
+					if (_max < _per)
+						_per = _max;
 					if (i > _max) {
 						return null;
 					}
-					setTimeout(function () {
+					setTimeout(function() {
 						var list = [];
-						for (var j=0; j<_per; j++) {
+						for (var j = 0; j < _per; j++) {
 							var $node = $listItem.clone();
-							$node.find('.lazy').attr("src",dir+(j+i)+".jpg");
+							$node.find('.lazy').attr("src", dir + (j + i) + ".jpg");
 							list.push($node);
 						}
 						i += 10;
 						callback(list);
 					}, 1200);
 				});
-      });
+			});
 
-      App.controller('good', function (page) {
-        // put stuff here
-			var $loading  = $(page).find('.loading'),
-					$list     = $(page).find('.app-list'),
-					$listItem = $(page).find('.app-list>div'),
-					i = 1 , _max = 99 , _per = 10  ;
-			var dir = "../vision/photos/人像/";
+			App.controller('good', function(page) {
+				// put stuff here
+				var $loading = $(page).find('.loading'), $list = $(page).find('.app-list'), $listItem = $(page).find('.app-list>div'), i = 1, _max = 99, _per = 10;
+				var dir = "../vision/photos/人像/";
 				$loading.remove();
 				$listItem.remove();
 
-				App.infiniteScroll($list, { loading: $loading }, function (callback) {
+				App.infiniteScroll($list, {
+					loading : $loading
+				}, function(callback) {
 					if (i >= _max) {
 						return null;
 					}
-					setTimeout(function () {
+					setTimeout(function() {
 						var list = [];
-						for (var j=0; j<_per; j++) {
+						for (var j = 0; j < _per; j++) {
 							var $node = $listItem.clone();
-							$node.find('.lazy').attr("src",dir+(j+i)+".jpg");
+							$node.find('.lazy').attr("src", dir + (j + i) + ".jpg");
 							list.push($node);
 						}
 						i += 10;
 						callback(list);
 					}, 1200);
 				});
-      });
+			});
 
-      try {
-        App.restore();
-      } catch (err) {
-        App.load('home');
-      }
-    </script>
-</body>
+			try {
+				App.restore();
+			} catch (err) {
+				App.load('home');
+			}
+		</script>
+	</body>
 </html>
