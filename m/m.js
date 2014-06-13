@@ -2,36 +2,29 @@ App.controller('home', function(page) {
 	// put stuff here
 });
 
-App.controller('view-detail', function(page, argu) {
-	var album = argu.album;
-	var _max = argu.max;
+App.controller('detail', function(page, argu) {
+	var item = argu.item;
+	var title = argu.title;
 
-	$(page).find('.app-title').text(album);
+	$(page).find('.app-title').text(title);
 
-	var $loading = $(page).find('.loading'), $list = $(page).find('.app-list'), $listItem = $(page).find('.app-list>div'), i = 1, _per = 10;
-	var dir = "../vision/photos/" + album + "/";
-	$loading.remove();
-	$listItem.remove();
+	var $loading = $(page).find('.loading');
 
-	App.infiniteScroll($list, {
-		loading : $loading
-	}, function(callback) {
-		if (_max < _per)
-			_per = _max;
-		if (i > _max) {
-			return null;
-		}
-		setTimeout(function() {
-			var list = [];
-			for (var j = 0; j < _per; j++) {
-				var $node = $listItem.clone();
-				$node.find('.lazy').attr("src", dir + (j + i) + ".jpg");
-				list.push($node);
-			}
-			i += 10;
-			callback(list);
-		}, 1200);
+	$.get('views/' + item + '.html', function(response) {
+		$loading.remove();
+		$(page).find(".app-content").html(response);
+	})
+	
+	// 为动态加载的按钮注册事件
+	$(page).on('appReady', function() {
+		$(page).find('.app-button').on('click', function() {
+			//alert('button was clicked!');
+			target = $(this).data("target");
+			args = JSON.parse( $(this).data("target-args") );
+			App.load(target, args);
+		});
 	});
+
 });
 
 App.controller('good', function(page) {

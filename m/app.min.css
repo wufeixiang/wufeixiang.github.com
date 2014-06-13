@@ -90,6 +90,20 @@ width:0 !important
 	background-color:#000;
 	color:#FFF
 }
+.app-bottombar {
+	z-index:3000;
+	position:relative;
+	height:44px;
+	width:100%;
+	background-color:#000;
+	color:#FFF;
+	position:fixed;
+	bottom:0;
+	line-height:44px
+}
+
+
+
 .app-android .app-topbar {
 	height:48px
 }
