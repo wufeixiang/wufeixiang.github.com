@@ -3,30 +3,30 @@
 		<div class="thumbnail">
 			<div class="caption">
 				<h5><small>时间：</small>2013年6月</h5>
-				<h5><small>项目：</small><i><span class="glyphicon glyphicon-star"></span>云设计Web客户端开发</i></h5>
-				<h5><small>职责：</small>客户端开发</h5>
+				<h5><small>项目：</small><i><span class="glyphicon glyphicon-star"></span>云设计后台管理系统</i></h5>
+				<h5><small>职责：</small>后台 开发</h5>
 			</div>
-			<img src="images/server.jpg" />
+			<img src="images/server3.jpg" class="img-responsive" />
 			<div class="caption">
 				<h5><small>描述：</small></h5>
 				<p>
-					<strong>云设计</strong>作为<strong>家具设计系统</strong>的必经之路，需要提供稳定，快速的响应。为此，我们使用了敏捷开发模式，快速开发，测试，反馈，修改。
+					在完成<strong>云设计</strong>Web客户端基本版本的开发后，我又开始做后台管理系统，让数据对所有开发人员，测试人员可视化。
 				</p>
 				<blockquote>
 					<p class="lead">
-						前端使用了<strong>Thinkphp</strong>快速开发框架。
+						后台使用了<strong>Thinkphp+bootstrap</strong>快速开发框架
 					</p>
 				</blockquote>
-				<img src="images/thinkphp.png" class="img-responsive" />
+				<img src="images/tb.jpg" class="img-responsive" />
 				<p>
-					得益于<strong>Thinkphp</strong>便捷的开发模块，我们很快做出了一个版本进行测试。
-					在进行一番功能性测试，压力测试后，我们对功能进行了进一步的完善，以及加入了更多人性化的设计。
-					<br />
-					于是，云设计发布了第一个版本V1.0给尚品宅配和维意定制的设计师使用。
+					后台使用了RBAC进行基于用户角色的权限管理，让每个不同角色组的用户使用获得不同的访问，操作权限。
+				</p>
+				<p>
+					最初，我们对统计数据的处理方法是直接使用SQL从原始数据库拿，后来发现，统计数据会极大地占用数据库查询时间，并且经常会锁死数据库。
 				</p>
 				<blockquote>
 					<p class="lead">
-						但是用户行为并不是机器测试能测试出来的，在观察了一段时间的使用数据后，我们发现数据出现异常。
+						
 					</p>
 				</blockquote>
 				<p>
@@ -39,8 +39,7 @@
 				<blockquote>
 					<ul>
 						<li>
-							使用<strong>阿里测</strong>进行前端访问测试，压缩合并css,js文件，压缩图片文件；由于设计方案图片较多，这一步极大的提升的页面的显示速度；
-							<img src="images/server2.jpg" class="img-responsive" />
+							使用<strong>阿里测</strong>进行前端访问测试，压缩合并css,js文件，压缩图片文件；由于设计方案图片较多，这一步极大的提升的页面的显示速度； <img src="images/server2.jpg" class="img-responsive" />
 						</li>
 						<li>
 							关闭Thinkphp日志，开启文件缓存，开启前端SQL缓存；
@@ -50,7 +49,7 @@
 						</li>
 						<li>
 							优化nginx配置，开启更多的worker process,开启gzip，开启keepalive，使用nginx缓存，优化php-fpm配置等，提高服务器响应能力
-						<img src="images/lenp.jpg" class="img-responsive" />
+							<img src="images/lenp.jpg" class="img-responsive" />
 						</li>
 					</ul>
 				</blockquote>
