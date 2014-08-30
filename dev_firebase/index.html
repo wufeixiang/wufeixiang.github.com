@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="utf-8">
+		<title>FireBase Example</title>
+		<!-- AngularJS -->
+		<script src="libs/angular/angular.min.js"></script>
+		<!-- Firebase -->
+		<script src="libs/firebase/firebase.js"></script>
+		<!-- AngularFire -->
+		<script src="libs/firebase/angularfire.min.js"></script>
+		<!-- Common Files -->
+		<script src="js/common.js"></script>
+	</head>
+
+	<body ng-controller="MyController">
+		<!-- CHAT MARKUP -->
+		<div class='example-chat l-demo-container'>
+			<header>Firebase Chat Demo</header>
+
+			<div class='example-chat-toolbar'>
+				<label for='nameInput'>Username:</label>
+				<input ng-model='name' type='text' id='nameInput' placeholder='enter a username...'>
+			</div>
+
+			<ul ng-if="messages.length>0" id='example-messages' class='example-chat-messages'>
+				<li ng-repeat='msg in messages'>
+					<strong class='example-chat-username'>{{msg.from}}</strong>
+					{{msg.body}}
+				</li>
+			</ul>
+
+			<footer>
+				<input ng-model='msg' ng-keydown="addMessage($event)" type='text' id='messageInput' placeholder='Type a message...'>
+			</footer>
+
+			<a>https://www.firebase.com/docs/web/libraries/angular/quickstart.html</a>
+		</div>
+	</body>
+
+</html>
