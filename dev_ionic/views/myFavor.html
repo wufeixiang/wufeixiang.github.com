@@ -1,0 +1,20 @@
+<ion-view title="我的收藏">
+	<ion-content>
+		<div class="noinfo" ng-show="list.length==0">
+			没有信息
+		</div>
+		<div class="list card" ng-repeat="item in list">
+			<div class="item-image">
+				<img class="full-image" ng-src="{{item.xg_file}}">
+			</div>
+			<div class="item item-body">
+				收藏于：{{item.writetime}}
+			</div>
+		</div>
+		<ion-infinite-scroll
+		ng-if="moreDataCanBeLoaded()"
+		on-infinite="loadMore()"
+		distance="5%"
+		></ion-infinite-scroll>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,23 @@
+<ion-view title="发现">
+	<ion-content>
+
+		<ion-list>
+			<div ng-repeat="item in list" class="list card">
+				<div class="item-image">
+					<img class="full-image" ng-src="{{item.xg_file}}">
+				</div>
+				<div class="item tabs tabs-secondary tabs-icon-left">
+					<a class="tab-item" ng-click="setPlanGood(item)"> <i class="icon ion-thumbsup"></i> {{item.good_cnt}} </a>
+					<a class="tab-item" > <i class="icon ion-chatbox"></i> {{item.comment_cnt}} </a>
+					<a ng-hide="item.favor" class="tab-item" ng-click="setPlanFavor(item)"> <i class="icon ion-ios7-heart-outline"></i> 收藏 </a>
+					<a ng-if="item.favor" class="tab-item"><i class="icon ion-heart balanced"></i> 已收藏 </a>
+				</div>
+			</div>
+		</ion-list>
+		<ion-infinite-scroll
+		ng-if="moreDataCanBeLoaded()"
+		on-infinite="loadMore()"
+		distance="5%"
+		></ion-infinite-scroll>
+	</ion-content>
+</ion-view>

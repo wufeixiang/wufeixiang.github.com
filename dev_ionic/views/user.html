@@ -1,0 +1,63 @@
+<ion-view title="{{userInfo.name}}">
+	<ion-content>
+		<div class="item item-avatar" ng-show="userInfo">
+			<img ng-src="{{userInfo.face}}" />
+			<h2>{{userInfo.name}}</h2>
+			<p>
+				<button class="button button-small icon-left ion-star button-light">
+					好评方案数：{{userInfo.cnt_plans_good}}
+				</button>
+				<!-- <button class="button button-small icon-left ion-star button-light">
+				总方案数：{{userInfo.cnt_plans_all}}
+				</button> -->
+				<button ng-hide="stared" ng-click="addStar()" class="button button-small icon-left ion-star button-light">
+					关注
+				</button>
+				<button ng-show="stared" class="button button-small icon-left ion-star button-balanced">
+					已关注
+				</button>
+			</p>
+		</div>
+
+		<ion-list>
+			<div  ng-repeat="item in list" class="list card">
+				<div class="item-image">
+					<img class="full-image" ng-src="{{item.xg_file}}">
+				</div>
+				<div class="item tabs tabs-secondary tabs-icon-left">
+					<a class="tab-item" ng-click="setPlanGood(item)"> <i class="icon ion-thumbsup"></i> {{item.good_cnt}} </a>
+					<!-- <a class="tab-item" href="#/tab/indexDetail/{{item.CloudID}}"> <i class="icon ion-chatbox"></i> {{item.comment_cnt}} </a> -->
+					<a ng-hide="item.favor" class="tab-item" ng-click="setPlanFavor(item)"> <i class="icon ion-ios7-heart-outline"></i> 收藏 </a>
+					<a ng-if="item.favor" class="tab-item"><i class="icon ion-heart balanced"></i> 已收藏 </a>
+				</div>
+			</div>
+		</ion-list>
+		<ion-infinite-scroll
+		ng-if="moreDataCanBeLoaded()"
+		on-infinite="loadMore()"
+		distance="1%"
+		></ion-infinite-scroll>
+		<div class="noinfo" ng-show="list.length==0">
+			没有信息
+		</div>
+	</ion-content>
+</ion-view>
+<ion-tabs class="tabs-icon-top tabs-assertive">
+
+	<ion-tab title="我的" icon="icon ion-ios7-person-outline" href="#/tab/my">
+		<ion-nav-view name="tab-my"></ion-nav-view>
+	</ion-tab>
+
+	<ion-tab title="推荐" icon="icon ion-ios7-home-outline" href="#/tab/index">
+		<ion-nav-view name="tab-index"></ion-nav-view>
+	</ion-tab>
+
+	<ion-tab title="发现" icon="icon ion-ios7-search" href="#/tab/explore">
+		<ion-nav-view name="tab-explore"></ion-nav-view>
+	</ion-tab>
+
+	<ion-tab title="英雄榜" icon="icon ion-ios7-people-outline" href="#/tab/level">
+		<ion-nav-view name="tab-level"></ion-nav-view>
+	</ion-tab>
+
+</ion-tabs>

@@ -1,0 +1,28 @@
+<ion-view title="我的资源">
+	<ion-content>
+		<div class="card" ng-show="list.length == 0">
+			<div class="item item-text-wrap text-center">
+				没有信息
+			</div>
+		</div>
+		<div ng-repeat="item in list" class="list card">
+			<div class="item-image">
+				<img class="full-image" ng-src="http://m.yfway.com/MobileAPI/{{item.filepath}}">
+			</div>
+			<div class="item item-body">
+				<p>
+					拍照时间：{{item.create_time}}
+					<br />
+					类型：{{item.roomtype}}
+					<br />
+					<a href="#/tab/myCus/{{item.customer_id}}"></a>客户号：{{item.customer_id}}
+				</p>
+			</div>
+		</div>
+		<ion-infinite-scroll
+		ng-if="moreDataCanBeLoaded()"
+		on-infinite="loadMore()"
+		distance="5%"
+		></ion-infinite-scroll>
+	</ion-content>
+</ion-view>

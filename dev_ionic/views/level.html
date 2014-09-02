@@ -1,0 +1,11 @@
+<ion-view title="英雄榜">
+	<ion-content>
+		<div class="list">
+			<a ng-repeat="item in list" href="#/user/{{item.username}}" class="item item-avatar item-icon-left"> <img ng-src="{{item.face}}" /> 
+				<h2>{{item.name}}</h2>
+			<p>
+				经验：{{item.experience}}
+			</p> </a>
+		</div>
+ 	</ion-content>
+</ion-view>

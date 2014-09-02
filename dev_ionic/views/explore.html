@@ -1,0 +1,13 @@
+<ion-view title="发现">
+	<ion-content>
+		<ion-list>
+			<div class="item item-divider">
+				<p>世界之大，总有你想不到的美景</p>
+			</div>
+			<a ng-repeat="item in list" class="item item-thumbnail-left" href="#/tab/exploreDetail/{{item.type}}"> <img ng-src="{{item.xg_file}}"> <h2>{{item.type | getRoomType }}</h2>
+			<p>
+				{{item.type | getRoomTypeEn }}
+			</p> </a>
+		</ion-list>
+	</ion-content>
+</ion-view>

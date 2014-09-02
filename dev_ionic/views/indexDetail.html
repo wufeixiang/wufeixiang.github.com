@@ -1,0 +1,62 @@
+<ion-view title="精彩推荐">
+	<ion-content>
+		<div class="list card">
+			<a href="#/tab/user/{{room.username}}" class="item item-avatar">
+				<img ng-src="{{room.face}}">
+				<h2>{{room.name}}</h2>
+				<p>
+					{{room.writetime}}
+				</p>
+			</a>
+			<div class="item-image">
+				<img class="full-image" ng-src="{{room.xg_file}}">
+			</div>
+			<div class="item item-body">
+				{{room.comment}}
+				<p>
+					类型：{{room.type}}
+					<br />
+					风格：{{room.style}}
+					<br />
+					店面：{{room.shop}}
+				</p>
+			</div>
+
+			<div class="item tabs tabs-secondary tabs-icon-left">
+				<a class="tab-item" ng-click="setPlanGood(room)"> <i class="icon ion-thumbsup"></i> {{room.good_cnt}} </a>
+				<a ng-hide="room.favor" class="tab-item" ng-click="setPlanFavor(room)"> <i class="icon ion-ios7-heart-outline"></i> 收藏 </a>
+				<a ng-if="room.favor" class="tab-item"><i class="icon ion-heart balanced"></i> 已收藏 </a>
+			</div>
+		</div>
+		<form name="form" ng-submit="addReply()">
+			<div class="item-input-inset">
+				<label class="item-input-wrapper"> <i class="icon ion-ios7-chat placeholder-icon"></i>
+					<input type="search" name="content" ng-model="reply.content" required="required" placeholder="{{name}}说点什么吧...">
+				</label>
+				<button type="submit" ng-disabled="form.$invalid"  class="button button-clear">
+					发表
+				</button>
+			</div>
+		</form>
+		<ion-list>
+			<!--评论列表-->
+			<ion-item ng-repeat="item in list">
+				<a href="#/tab/user/{{item.username}}" class="item item-avatar">
+					<img ng-src="{{item.face}}" />
+					<h2>{{item.name}} <span class="font-grey">{{item.writetime}}  {{item.devicename}}</span></h2>
+					<p>
+						{{item.content}}
+					</p>
+				</a>
+				<div class="item tabs tabs-secondary tabs-icon-left">
+					<a class="tab-item" ng-click="setGood(item)"> <i class="icon ion-thumbsup"></i> {{item.good_cnt}} </a>
+				</div>
+			</ion-item>
+		</ion-list>
+		<ion-infinite-scroll
+		ng-if="moreDataCanBeLoaded()"
+		on-infinite="loadMore()"
+		distance="5%"
+		></ion-infinite-scroll>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,82 @@
+* {
+	font-family: "Microsoft YaHei", "微软雅黑", "Hiragino Sans GB", "Hiragino Sans GB W3", tahoma, arial, simsun, "宋体"
+}
+h3 {
+	font-size: 20px;
+	color: #34302d;
+	font-weight: normal;
+	margin: 0;
+}
+img {
+	vertical-align: middle;
+}
+.font-grey {
+	color: #777
+}
+.text-center {
+	text-align: center
+}
+.noinfo {
+	text-align: center;
+	color: #eee;
+	padding: 50px 0;
+}
+.content {
+	overflow: hidden;
+	width: 100%;
+}
+.border {
+	/*border: 1px solid #9b999a;
+	 border-radius: 10px;*/
+	/*box-shadow: 1px 1px 3px rgba(0,0,0,0.5);*/
+}
+.col-md-4, .col-md-8 {
+	position: relative;
+}
+.col-md-4 {
+	padding: 20px;
+	width: 50%;
+}
+
+.col-md-8 {
+	margin: 10px 0 0 0;
+}
+.user {
+	padding-left: 150px;
+	height: 150px;
+	width: 100%;
+}
+.user > .face {
+	/*border-radius:50%;*/
+	box-shadow: 1px 0 4px rgba(0,0,0,.3);
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.u_tips {
+	font-size: 30px;
+	color: #939393;
+}
+.username {
+	color: #01377d;
+	margin: 0 0 40px 0;
+	font-size: 40px;
+}
+hr {
+	border: 1px dashed #ddd;
+}
+.logo {
+	position: absolute;
+	right: 10px;
+	bottom: 2px;
+}
+.clear {
+	clear: both;
+}
+.rank {
+	width: 100%;
+}
+.desc {
+	line-height: 24px;
+}

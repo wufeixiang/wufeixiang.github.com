@@ -1,0 +1,37 @@
+<ion-view title="反馈">
+	<ion-content>
+		<form name="form" ng-submit="addReply()">
+			<div class="bar bar-header item-input-inset">
+				<label class="item-input-wrapper"> <i class="icon ion-ios7-chat placeholder-icon"></i>
+					<input type="text" name="content" ng-model="reply.content" required="required" placeholder="{{name}}说点什么吧...">
+				</label>
+				<button type="submit" ng-disabled="form.$invalid"  class="button button-clear">
+					发表
+				</button>
+			</div>
+		</form>
+		<ion-refresher
+		pulling-text="下拉刷新..."
+		on-refresh="doRefresh()"></ion-refresher>
+		<ion-list>
+			<ion-item ng-repeat="item in list">
+				<a href="#/tab/user/{{item.username}}" class="item item-avatar">
+					<img ng-src="{{item.face}}" />
+					<h2>{{item.name}} <span class="font-grey">{{item.writetime}}  {{item.devicename}}</span></h2>
+					<p>
+						{{item.content}}
+					</p>
+				</a>
+				<div class="item tabs tabs-secondary tabs-icon-left">
+					<a class="tab-item" ng-click="setGood(item)"> <i class="icon ion-thumbsup"></i> 赞 {{item.good_cnt}} </a>
+					<a class="tab-item" ng-click="setReply(item)"> <i class="icon ion-chatbox"></i> 回复 </a>
+				</div>
+			</ion-item>
+		</ion-list>
+		<ion-infinite-scroll
+		ng-if="moreDataCanBeLoaded()"
+		on-infinite="loadMore()"
+		distance="5%"
+		></ion-infinite-scroll>
+	</ion-content>
+</ion-view>

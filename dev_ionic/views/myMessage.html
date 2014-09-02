@@ -1,0 +1,25 @@
+<ion-view title="我的消息">
+	<ion-content>
+		<div class="noinfo" ng-show="list.length==0">
+			没有信息
+		</div>
+		<ion-refresher
+		pulling-text="下拉刷新..."
+		on-refresh="doRefresh()"></ion-refresher>
+		<ion-list>
+			<ion-item ng-repeat="item in list">
+				<div class="item item-avatar">
+					<img src="resource/images/face.png" />
+					<p>
+						{{$index+1}} . {{item.message}}
+					</p>
+				</div>
+			</ion-item>
+		</ion-list>
+		<ion-infinite-scroll
+		ng-if="moreDataCanBeLoaded()"
+		on-infinite="loadMore()"
+		distance="5%"
+		></ion-infinite-scroll>
+	</ion-content>
+</ion-view>

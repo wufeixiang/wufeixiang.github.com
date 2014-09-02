@@ -1,0 +1,20 @@
+<ion-view title="联系我们">
+	<ion-content>
+		<form name="form" ng-submit="addFeed()">
+			<div class="list list-inset">
+				<label class="item item-input">
+					<input name="name" ng-model="feed.name" type="text" placeholder="您的姓名">
+				</label>
+				<label class="item item-input">
+					<input name="email" ng-model="feed.email" type="email" placeholder="E-mail">
+				</label>
+				<label class="item item-input"> 					<textarea rows="10" name="content"  ng-model="feed.content" placeholder="说点什么吧..."></textarea> </label>
+
+				<button ng-disabled="form.$invalid" class="button button-block button-positive">
+					提交
+				</button>
+			</div>
+		</form>
+		
+	</ion-content>
+</ion-view>
