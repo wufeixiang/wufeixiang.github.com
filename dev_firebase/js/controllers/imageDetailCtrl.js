@@ -34,15 +34,5 @@ angular.module('myApp', []).controller('imageDetailCtrl', ['$scope', '$http', '$
 			return $scope.hasMoreData;
 		}
 
-		$scope.addComment = function(obj) {
-			var id = obj.CloudID;
-			var url = _GLOBAL.api + '/setFavor/username/' + _userInfo.username + '/CloudID/' + id;
-			$http.get(url).success(function(ret) {
-				var status = ret.status;
-				if (status == 1) {
-					obj.favor = true;
-				}
-			});
-		}
 	}
 ]);

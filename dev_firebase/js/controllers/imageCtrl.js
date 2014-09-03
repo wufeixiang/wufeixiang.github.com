@@ -1,5 +1,5 @@
 // 图片列表
-angular.module('myApp', []).controller("imageCtrl", ['$scope', '$http',
+angular.module('myControllers').controller("imageCtrl", ['$scope', '$http',
 	function($scope, $http) {
 		$scope.list = [];
 		

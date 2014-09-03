@@ -1,36 +1,7 @@
-<!DOCTYPE html>
-<html ng-app="myApp">
-
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>FireBase Example</title>
-		<link rel="stylesheet" href="libs/bootstrap-3.2.0-dist/css/bootstrap.min.css" />
-		<!-- AngularJS -->
-		<script src="libs/angular/angular.min.js"></script>
-		<!-- Firebase -->
-		<script src="libs/firebase/firebase.js"></script>
-		<!-- AngularFire -->
-		<script src="libs/firebase/angularfire.min.js"></script>
-		<!-- Common Files -->
-		<script src="js/common.js"></script>
-	</head>
-
-	<body ng-controller="MyController">
-		<div class='container'>
-			<div class="row">
-				<div class="col-md-4 col-xs-6">
-					<div class="thumbnail">
-						<a href="#/imageDetail/{{item.id}}">
-							<img ng-src="{{item.id}}" />
-						</a>
-						<div class="caption text-center padding-thin">
-							{{item.cnt}}
-						</div>
-					</div>
-				</div>
-			</div>
+<div class="row">
+	<div ng-repeat="item in list" class="col-md-4 col-xs-6">
+		<div class="thumbnail">
+			<a ng-href="#/imageDetail/{{item.title}}"> <img ng-src="{{item.icon}}" /> </a>
 		</div>
-	</body>
-
-</html>
+	</div>
+</div>
