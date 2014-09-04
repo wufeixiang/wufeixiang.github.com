@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<title>云设计</title>
+		<link href="resource/css/common.css" rel="stylesheet">
+		<link href="resource/ionic/css/ionic.css" rel="stylesheet">
+	</head>
+	<body ng-app="myApp" animation="slide-left-right-ios7">
+		<ion-nav-bar class="bar-stable nav-title-slide-ios7">
+			<ion-nav-back-button class="button-icon icon  ion-ios7-arrow-back">
+
+			</ion-nav-back-button>
+		</ion-nav-bar>
+		<ion-nav-view>
+			<div class="noinfo">Loading...</div>
+		</ion-nav-view>
+		<script>
+			var _userInfo = {
+				"username" : "{$data.username}",
+				"name" : "{$data.name}",
+				"brand" : '{$data.brand}',
+				"token" : "{$data.token}",
+				"deviceuid" : "{$data.deviceuid}",
+				"devicename" : "{$data.devicename}"
+			};
+		</script>
+
+		<script src="resource/js/common/common.js"></script>
+		<script src="resource/ionic/js/ionic.bundle.min.js"></script>
+		<script src="resource/js/app.js"></script>
+		<script src="resource/js/filters/filters.js"></script>
+		<!--controllers-->
+		<script src="resource/js/controllers/index.js"></script>
+		<script src="resource/js/controllers/indexDetail.js"></script>
+		<!-- <script src="resource/js/controllers/comments.js"></script> -->
+		<script src="resource/js/controllers/level.js"></script>
+		<script src="resource/js/controllers/explore.js"></script>
+		<script src="resource/js/controllers/exploreList.js"></script>
+		<script src="resource/js/controllers/exploreDetail.js"></script>
+		<script src="resource/js/controllers/my.js"></script>
+		<script src="resource/js/controllers/myResource.js"></script>
+		<script src="resource/js/controllers/myFavor.js"></script>
+		<script src="resource/js/controllers/myComments.js"></script>
+		<script src="resource/js/controllers/user.js"></script>
+
+	</body>
+</html>

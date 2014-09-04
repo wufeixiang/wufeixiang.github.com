@@ -1,7 +1,8 @@
-angular.module('myApp', []).controller('imageDetailCtrl', ['$scope', '$http', '$firebase',
-	function($scope, $http, $firebase) {
+angular.module('myControllers').controller('ImageDetailCtrl', ['$scope', '$http', '$firebase', '$stateParams',
+	function($scope, $http, $firebase, $stateParams) {
+		$scope.title = $stateParams.title;
 		$scope.list = [];
-
+		
 		$scope.addMessage = function(e) {
 			//LISTEN FOR RETURN KEY
 			if (e.keyCode === 13 && $scope.msg) {
