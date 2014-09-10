@@ -2,7 +2,7 @@
 var _GLOBAL = {
 	"firebase": "https://icup.firebaseio.com/"
 };
-angular.module('myApp', ['ui.router', '$firebase', 'myControllers']).config(function($httpProvider) {
+angular.module('myApp', ['ui.router',"firebase", 'myControllers']).config(function($httpProvider) {
 	$httpProvider.defaults.transformRequest = function(obj) {
 		var str = [];
 		for (var p in obj) {

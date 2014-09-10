@@ -1,7 +1,7 @@
 angular.module('myControllers').controller('ImageDetailCtrl', ['$scope', '$http', '$firebase', '$stateParams',
 	function($scope, $http, $firebase, $stateParams) {
 		$scope.title = $stateParams.title;
-		$scope.list = [];
+		$scope.messages = [];
 		
 		$scope.addMessage = function(e) {
 			//LISTEN FOR RETURN KEY
@@ -20,20 +20,10 @@ angular.module('myControllers').controller('ImageDetailCtrl', ['$scope', '$http'
 		$scope.loadData = function() {
 			var ref = new Firebase(_GLOBAL.firebase);
 			var query = ref.endAt().limit(10);
-			$scope.list = $firebase(query).$asArray();
-		}
+			$scope.messages = $firebase(query).$asArray();
+		}	
+		$scope.loadData();
 
-		$scope.$on('stateChangeSuccess', function() {
-			$scope.loadMore();
-		});
-		$scope.loadMore = function() {
-			$scope.loadData();
-		}
-
-		$scope.hasMoreData = true;
-		$scope.moreDataCanBeLoaded = function() {
-			return $scope.hasMoreData;
-		}
-
+	
 	}
 ]);
