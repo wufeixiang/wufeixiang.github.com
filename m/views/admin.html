@@ -26,36 +26,9 @@
 				</p>
 				<blockquote>
 					<p class="lead">
-						
+						于是，我们开始进行数据库的分离，讲统计数据的计算放在计算服务器上进行。
 					</p>
 				</blockquote>
-				<p>
-					我们（强制）采集的数据与请求匹配的数据并不一致。这让我们非常紧张。
-					<br />
-					于是，我们加入了反馈机制，并请项目部与设计师们进行面对面的沟通，听取他们的真实使用感受，进一步改进云设计。
-					<br />
-					接下来，我们开始对云设计Web客户端进行<strong>全方位的优化</strong>：前端html优化，Thinkphp框架优化，数据库优化，服务器性能优化等，包括
-				</p>
-				<blockquote>
-					<ul>
-						<li>
-							使用<strong>阿里测</strong>进行前端访问测试，压缩合并css,js文件，压缩图片文件；由于设计方案图片较多，这一步极大的提升的页面的显示速度； <img src="images/server2.jpg" class="img-responsive" />
-						</li>
-						<li>
-							关闭Thinkphp日志，开启文件缓存，开启前端SQL缓存；
-						</li>
-						<li>
-							数据库方面，我们得到集团大型团购网站<strong>新居网</strong>的大力帮助，对数据库进行了大规模优化，包括优化字段结构，优化数据类型，优化SQL语句，全面使用存储过程；分库，分表，使用Mysql内置内存数据库等。
-						</li>
-						<li>
-							优化nginx配置，开启更多的worker process,开启gzip，开启keepalive，使用nginx缓存，优化php-fpm配置等，提高服务器响应能力
-							<img src="images/lenp.jpg" class="img-responsive" />
-						</li>
-					</ul>
-				</blockquote>
-				<p>
-					从<strong>Thinkphp</strong>框架里面，我学习到很多有用的东西，尤其是简洁的数据库操作类。在其他没有使用Thinkphp的项目，我都会使用自己提取，精简过的数据库操作类。
-				</p>
 			</div>
 		</div>
 	</div>

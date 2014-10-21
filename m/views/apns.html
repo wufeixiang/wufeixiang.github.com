@@ -1,0 +1,26 @@
+<div class="row-fluid">
+	<div class="col-sm-12 col-md-12 app-list" style="margin:4px 0;">
+		<div class="thumbnail">
+			<div class="caption">
+				<h5><small>项目：</small><i><span class="glyphicon glyphicon-star"></span>云推送</i></h5>
+				<h5><small>职责：</small>负责人</h5>
+			</div>
+			<img src="images/apns.jpg" />
+			<div class="caption">
+				<h5><small>描述：</small></h5>
+				<p>
+					推送对于客户端而言非常重要，我们的推送使用的是百度云推送（android）+APNS（ios）。由于涉及到两种不同的推送方式，所以我进行了一定程度的整合，使客户端调用更方便。
+				</p>
+				<p>
+					为了不堵塞外部调用，推送必须异步执行。一开始，我们想到的异步处理方式是直接使用shell的后台处理。在数据量不大的情况下，这种方法还是可行的。
+				</p>
+				<blockquote>
+					<p class="lead">
+						但是，为了让推送服务更稳定，更高效的运行，我使用了Gearman异步任务分发系统。类似nginx的多个worker一样，开启多个线程进行推送任务。
+					</p>
+				</blockquote>
+			</div>
+		</div>
+	</div>
+
+</div>
