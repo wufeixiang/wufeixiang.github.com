@@ -1,0 +1,32 @@
+<div class="row-fluid">
+	<div class="col-sm-12 col-md-12 app-list" style="margin:4px 0;">
+		<div class="thumbnail">
+			<div class="caption">
+				<h5><small>项目：</small><i><span class="glyphicon glyphicon-star"></span>云设计点评系统</i></h5>
+				<h5><small>职责：</small>负责人</h5>
+			</div>
+			<img src="images/dp.jpg" />
+			<div class="caption">
+				<h5><small>描述：</small></h5>
+				<p>
+					每天，集团设计中心的同事都会对我们采集的设计方案进行点评，过滤一些不合格的方案，评出好的方案，以供云设计和设计师参考，提升设计师水平。
+					由于采集的设计方案数量众多，点评系统的要点就是要快！
+				</p>
+				<blockquote>
+					<p class="lead">
+						所以我使用了Redis进行数据存储，使用条件组合Key进行条件查询。事实证明，Redis内存数据库带来的速度是飞快的！
+					</p>
+				</blockquote>
+				<p>从之前的登录中心使用redis后，我们对redis的使用进一步扩展。这次的点评中心由于需要非常快的响应，使用传统的Mysql查询难以满足需求。</p>
+				<blockquote>
+					<p class="lead">
+						我们采用的方案是，先在晚上维护时将数据按条件组合写入redis，白天点评的时候，点评数据全部写入redis，完成后，晚上再将数据导回Mysql。
+						这样的操作，使用点评效率大大提升。
+					</p>
+				</blockquote>
+				
+			</div>
+		</div>
+	</div>
+
+</div>
