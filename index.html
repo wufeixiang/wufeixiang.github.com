@@ -1,85 +1,70 @@
-<!DOCTYPE HTML>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<title>Welcome to Wu Feixiang's Blog</title>
-<link href="public/style/common.css" rel="stylesheet" type="text/css">
-<link href="public/style/fullScreen.css" rel="stylesheet" type="text/css">
-<script src="public/js/jquery.js"></script>
-<script src="public/js/index.js"></script>
-<script src="public/js/iscroll.js"></script>
-<script src="public/js/fullScreen.js"></script>
-<meta property="qc:admins" content="114015146551011676714052617" />
-</head>
-<style type="text/css">
-* {
-	margin:0;
-	padding:0;
-}
-body {
-	width:100%;
-	height:100%;
-	background:#666;
-	overflow:hidden;
-}
-#container {
-	width:100%;
-	height:100%;
-	position:absolute;
-	left:0;
-	top:0;
-	overflow:hidden;
-	float:left;
-}
-.page {
-	width:100%;
-	height:100%;
-	position:relative;
-	float:left;
-}
-.iframe {
-	width:100%;
-	height:100%;
-	position:absolute;
-	left:0;
-	box-sizing:border-box;
-	padding:30px 0;
-}
-.loading
-{
-	display:none;
-	z-index:100;
-	width:100%;
-	height:768px;
-	position:fixed;
-	background:url(public/images/loading.gif) center no-repeat rgba(0,0,0,.4);
-}
-.back
-{
-	display:none;
-	position:absolute;
-	left:20px;top:2px;
-}
-.tips{}
-
-</style>
-<body onselectstart="return false">
-<img src="public/images/back.png" onClick="goBack();" class="back" />
-<header>
-  <nav><span class="tips">享受生活</span></nav>
-</header>
-<div id="container">
-  <div class="page">
-    <iframe class="iframe" id="iframe" src="main.html" frameborder="0"></iframe>
-  </div>
-  <!--这里加了个page的div是为了做滑动效果，还是不要了，免得占cpu-->
-</div>
-
-
-<footer>By wufeixiang，共同学习<a style="color:#fff;margin:0 5px;cursor:pointer;" onClick="toHome();">回到主页</a></footer>
-<div class="loading"></div>
-<div id="fullScreen">
-    
-</div>
-</body>
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery One Page Scroll by Pete R. | The Pete Design</title>
+		<link href='libs/onepage/onepage-scroll.css' rel='stylesheet' type='text/css'>
+		<meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<style>
+			html {
+				height: 100%;
+			}
+			body {
+				background: #E2E4E7;
+				padding: 0;
+				text-align: center;
+				position: relative;
+				margin: 0;
+				height: 100%;
+				-webkit-font-smoothing: antialiased;
+			}
+			.wrapper {
+				height: 100% !important;
+				height: 100%;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			.main section {
+				overflow: hidden;
+			}
+			.main section.page1 {
+				background: rgb(230, 217, 200);
+			}
+			.main section.page2 {
+				background: #555557 url(back-phone.png) no-repeat center -150px;
+			}
+			.main section.page3 {
+				background: url(tilted-phone.png) no-repeat 156px -150px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="main">
+				<section class="page1">
+					page1 ...
+				</section>
+				<section class="page2">
+					page2 ...
+				</section>
+				<section class="page3">
+					page3 ...
+				</section>
+			</div>
+		</div>
+		<script>
+			window.location.href = "/vision/";
+		</script>
+		<script type="text/javascript" src="libs/js/jquery.js"></script>
+		<script type="text/javascript" src="libs/onepage/jquery.onepage-scroll.js"></script>
+		<script>
+			$(document).ready(function() {
+				$(".main").onepage_scroll({
+					sectionContainer : "section",
+					responsiveFallback : 200,
+					loop : true
+				});
+			});
+		</script>
+	</body>
 </html>
