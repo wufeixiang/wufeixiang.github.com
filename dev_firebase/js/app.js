@@ -2,7 +2,7 @@
 var _GLOBAL = {
 	"firebase": "https://icup.firebaseio.com/"
 };
-angular.module('myApp', ['ui.router', '$firebase', 'myControllers']).config(function($httpProvider) {
+angular.module('myApp', ["firebase",'ui.router', 'myControllers']).config(function($httpProvider) {
 	$httpProvider.defaults.transformRequest = function(obj) {
 		var str = [];
 		for (var p in obj) {
@@ -18,11 +18,15 @@ angular.module('myApp', ['ui.router', '$firebase', 'myControllers']).config(func
 		url: "/index",
 		templateUrl: "views/index.html",
 		controller: 'IndexCtrl'
-
 	}).state('imageDetail', {
 		url: "/imageDetail/:title",
 		templateUrl: "views/imageDetail.html",
 		controller: 'ImageDetailCtrl'
+
+	}).state('web', {
+		url: "/web",
+		templateUrl: "views/web.html",
+		controller: 'WebCtrl'
 
 	});
 	$urlRouterProvider.otherwise("/index");

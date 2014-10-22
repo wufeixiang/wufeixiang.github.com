@@ -1,16 +1,9 @@
 <!--图片作背景-->
 <div class="row-fluid">
-	<div class="background-img" style="background-image:'../vision/photos/icon/5.jpg';"></div>
+	<div class="background-img" style="background-image:url(../vision/photos/icon/1.jpg);"></div>
 	<div class="col-xs-12">
-		<ul ng-if="messages.length>0" id='example-messages' class="list-group">
-			<!--
-				自己的话在右边，别人的话在左边（模仿QQ的对话框）
-            -->
-			<li ng-if="" class="list-group-item pull-right" ng-repeat='msg in messages'>
-				<h4 class="list-group-item-heading">{{msg.from}}<small class="pull-right">{{msg.writetime}}</small></h4>
-				<p class="list-group-item-text">{{msg.body}}</p>
-			</li>
-			<li ng-if="" class="list-group-item" ng-repeat='msg in messages'>
+		<ul id='messages' class="list-group">
+			<li" class="list-group-item" ng-repeat='msg in messages'>
 				<h4 class="list-group-item-heading">{{msg.from}}<small class="pull-right">{{msg.writetime}}</small></h4>
 				<p class="list-group-item-text">{{msg.body}}</p>
 			</li>
@@ -24,7 +17,7 @@
 						<span class="glyphicon glyphicon-bullhorn"></span>
 					</div>
 					<div class="input-group">
-						<input ng-model='msg' class="form-control" ng-keydown="addMessage($event)" type='text' id='messageInput' placeholder='Type a message...'>
+						<input ng-model='msg' class="form-control" ng-keydown="addMessage($event)" type='text' id='messageInput' placeholder='说点什么吧...'>
 					</div>
 				</div>
 			</div>
